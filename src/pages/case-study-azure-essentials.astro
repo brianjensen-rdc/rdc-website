@@ -14,6 +14,12 @@ const meta = [
   { label: 'Asset types', value: 'Video, eBook, presentation, illustration' },
   { label: 'Services used', value: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
 ];
+
+const gallery = [
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials-Dark_640x320.png', alt: 'Azure Essentials dark brand lockup', caption: 'Visual identity: dark brand lockup' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentialsVideo-OpeningFrame.png', alt: 'Opening frame from the Azure Essentials intro video', caption: 'Video production: intro video opening frame' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Event%20style%20guide_AzureEssentialsTechAccelerator.png', alt: 'Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: Tech Accelerator style guide' },
+];
 ---
 <Layout title="Azure Essentials" description="How Red Door Collaborative built the Azure Essentials brand identity and marketing suite for Microsoft.">
   <section class="hero tight">
@@ -85,6 +91,21 @@ const meta = [
 
   <section class="tight">
     <div class="container">
+      <span class="eyebrow">Selected assets</span>
+      <h2>A closer look at the work.</h2>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {gallery.map((g) => (
+          <figure class="asset-card">
+            <img src={g.src} alt={g.alt} loading="lazy" />
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
       <blockquote class="quote">
         We call it collaboration in action.
       </blockquote>
@@ -104,5 +125,24 @@ const meta = [
     height: auto;
     margin: 0 auto;
     border-radius: 16px;
+  }
+
+  .asset-card {
+    margin: 0;
+    background: var(--color-bg-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .asset-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .asset-card figcaption {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
   }
 </style>
