@@ -2,6 +2,90 @@
    Sourced from Brand Guidelines v1.0. Legacy variable names (--color-bg,
    --color-red, etc.) are kept as aliases so existing page markup doesn't
    need to change - only the values underneath moved to real brand colors. */
+
+/* --- Suisse Int'l (licensed) ---
+   Font files live in src/fonts/ and are referenced with a relative path so
+   Astro/Vite's asset pipeline hashes them and applies the correct GitHub
+   Pages base path automatically - no manual BASE_URL handling needed here,
+   unlike public/ assets referenced from .astro templates. */
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-100-normal.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-100-italic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-300-normal.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-300-italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-350-normal.woff2") format("woff2");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-350-italic.woff2") format("woff2");
+  font-weight: 350;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/suisse-intl-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* --- Brand palette (verbatim from guide) --- */
   --color-squid: #0D1724;
@@ -30,13 +114,11 @@
   /* Brand gradient (Wine -> Coral), available for hero/CTA treatments */
   --gradient-brand: linear-gradient(160deg, var(--color-wine), var(--color-coral));
 
-  /* Typeface: brand guide specifies Suisse (w/ Proxima Nova shown as an
-     alternate). Neither is freely licensed for web use, so Inter stands in -
-     a comparable functional grotesque, used as a single family for
-     headings and body the same way Suisse is used in the guide. Swap here
-     if/when a licensed Suisse or Proxima Nova web font is available. */
-  --font-heading: "Inter", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  /* Typeface: brand guide specifies Suisse, and RDC has a proper license -
+     self-hosted above via @font-face. Single family for headings and body,
+     same way the guide uses it (weight/size vary, family doesn't). */
+  --font-heading: "Suisse Intl", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Suisse Intl", "Segoe UI", system-ui, sans-serif;
 
   --max-width: 1180px;
   --radius: 14px;
@@ -49,6 +131,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
