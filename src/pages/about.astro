@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const brandPillars = [
+  {
+    word: 'Red',
+    copy: 'The color of passion and diversity. Our passion drives our energy with every client we meet.',
+  },
+  {
+    word: 'Door',
+    copy: 'A symbol of hospitality and community. Walking through our door means inviting you to possibilities beyond your imagination.',
+  },
+  {
+    word: 'Collaborative',
+    copy: 'Our reason for being. We work alongside you and your teams to bring your creative vision to life - think of us as your in-house marketing shop, for hire.',
+  },
+];
+
+const team = [
+  { name: 'Chris Telfer', title: 'Managing Partner, Creative Director' },
+  { name: 'Jenny Telfer', title: 'Managing Partner' },
+  { name: 'Brian Jensen', title: 'Head of People + Operations' },
+  { name: 'Amy Metzler', title: 'Sr. Marketing Account Manager' },
+  { name: 'Erin Genest', title: 'Marketing Account Manager' },
+  { name: 'Najwa Yosof', title: 'Assoc. Creative Director' },
+  { name: 'Nathan Smith', title: 'Sr. Lead, Motion Graphics' },
+  { name: 'Joy Baer', title: 'Sr. Lead, Visual Design' },
+  { name: 'Justine Brown', title: 'Sr. Lead, Marketing Content' },
+];
+---
+<Layout title="About" description="Meet Red Door Collaborative - a minority-founded, fully remote creative agency built on collaboration and diversity of thought.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">About us</span>
+      <h1>You and us. Marketing geniuses, together.</h1>
+      <p class="hero-sub">We are obsessed with telling your stories with collaboration and care.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Strategy and innovation, fueled by diversity</span>
+      <h2>What our name means to us.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        {brandPillars.map((p) => (
+          <div class="card">
+            <h3>{p.word}</h3>
+            <p set:html={p.copy} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <blockquote class="quote">
+        We are a minority-founded and minority-owned company, and this diversity is the foundation of our creative and strategic approach. We believe the best ideas emerge from a team formed by diversity of background and thought.
+      </blockquote>
+      <p class="quote-attribution">Diversity isn't just something we embrace - it's the very idea that drives us to push boundaries and inspire innovation.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Get to know the squad</span>
+      <h2>Leadership &amp; team</h2>
+      <div class="grid grid-3 team-grid" style="margin-top: 2.5rem;">
+        {team.map((member) => (
+          <div class="card team-card">
+            <h3>{member.name}</h3>
+            <p>{member.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>
+
+<style>
+  .team-card p { color: var(--color-red-bright); font-size: 0.9rem; margin: 0; }
+</style>

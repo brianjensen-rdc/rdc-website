@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const clients = ['Microsoft', 'Salesforce', 'Databricks', 'Procraft', 'Meta'];
+
+const caseStudies = [
+  {
+    name: 'Azure Essentials',
+    client: 'Microsoft',
+    services: 'Brand strategy, digital, content, social, video, design, events',
+  },
+  {
+    name: 'Visual Studio Subscriptions Benefits',
+    client: 'Microsoft',
+    services: 'Digital, content, social, video, graphic design, events',
+  },
+  {
+    name: 'Procraft Digital Course',
+    client: 'Procraft',
+    services: 'Brand strategy, content, video production, graphic design',
+  },
+];
+---
+<Layout title="Home">
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow">Creative &amp; Strategy Agency</span>
+      <h1>Where creativity &amp; strategy unite.</h1>
+      <p class="hero-sub">Marketing that speaks your brand's language and drives real engagement - from an embedded team that works the way yours does.</p>
+      <div class="cta-row">
+        <a href="/contact" class="btn btn-primary">Hire us</a>
+        <a href="/careers" class="btn btn-outline">Join us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <p class="social-proof-label">We've collaborated with some of the biggest names in tech.</p>
+      <div class="logo-strip">
+        {clients.map((c) => <span>{c}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">What we do</span>
+      <h2>Let's see what we can do together.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        <div class="card">
+          <h3>Consulting</h3>
+          <p>Embedded, project-based, and managed-services consulting that scales your team with the right people, fast.</p>
+        </div>
+        <div class="card">
+          <h3>Marketing</h3>
+          <p>Branding, digital, content, social, design, video, and event marketing - built as an extension of your brand.</p>
+        </div>
+        <div class="card">
+          <h3>Production</h3>
+          <p>From concept to launch, we staff the specialists who take a campaign from idea to finished, measurable work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Our work</span>
+      <h2>Marketing brilliance that speaks for itself.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        {caseStudies.map((cs) => (
+          <div class="card">
+            <h3>{cs.name}</h3>
+            <p class="case-client">{cs.client}</p>
+            <p class="case-services">{cs.services}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 2.5rem;">
+        <a href="/work" class="btn btn-outline">See all of our work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <blockquote class="quote">
+        "It all begins with an idea&nbsp; -  the way you tell your story online can make all the difference."
+      </blockquote>
+      <p class="quote-attribution">Chris Telfer, Managing Partner &amp; Creative Director</p>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>
+
+<style>
+  .hero { padding: 7rem 0 5rem; }
+  .hero-inner { max-width: 760px; }
+  .hero-sub { font-size: 1.15rem; max-width: 560px; }
+  .social-proof-label {
+    text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+  }
+  .case-client { color: var(--color-red-bright); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .case-services { font-size: 0.9rem; }
+</style>

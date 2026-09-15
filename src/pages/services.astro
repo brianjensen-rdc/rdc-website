@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pillars = [
+  { title: 'Collaboration is in our DNA', copy: "From idea to delivery, we partner with you to offer fully customized marketing and consulting solutions that are extensions of your brand and vision." },
+  { title: 'We speak creative', copy: 'We craft innovative solutions in content, branding, video production, and digital experiences that resonate with your audience and drive measurable results.' },
+  { title: 'We help you scale', copy: 'You have a project, we provide the resources to help you get there - the right person, or a full team of talented consultants, to meet your marketing needs.' },
+];
+
+const consulting = [
+  { title: 'Embedded Consulting', copy: "Scale your organization's output by adding industry experts to your team. We source, hire, train, and onboard additional staff to help you meet your objectives." },
+  { title: 'Project-based Consulting', copy: 'Our team of consultants plan and execute projects that tackle your biggest business challenges, with milestones and schedules that keep outcomes on time.' },
+  { title: 'Managed Services', copy: 'End-to-end solutions in which we staff teams of specialists to operate an on-going, repeatable business function or process.' },
+];
+
+const marketing = [
+  { title: 'Branding Strategy', items: ['Brand positioning and messaging', 'Brand voice and storytelling', 'Visual identity and brand guidelines', 'Rebranding and brand refresh strategies'] },
+  { title: 'Digital Marketing', items: ['Email marketing', 'Lead generation and nurturing campaigns', 'Multi-channel marketing strategy'] },
+  { title: 'Content Marketing', items: ['Blog and article creation', 'Whitepapers, eBooks, and guides', 'Thought leadership content', 'Case studies and testimonials', 'Long-form and short-form storytelling', 'Content strategy and editorial planning'] },
+  { title: 'Graphic Design Services', items: ['Brand identity and logo design', 'Presentation and deck design', 'Infographics and data visualization', 'Print and digital collateral', 'Packaging and product design', 'Custom illustrations and iconography'] },
+  { title: 'Social Media Marketing', items: ['Organic and paid social media', 'Content creation and management', 'Influencer and partnership marketing', 'Community engagement and growth'] },
+  { title: 'Website Design', items: ['UX/UI design and wireframing', 'Site asset design & production', 'Website audits and optimization'] },
+  { title: 'Video Marketing and Production', items: ['Brand storytelling and commercial videos', 'Animated explainer videos and motion graphics', 'Social media video content', 'Product demos and launch videos', 'Customer testimonials and case study videos', 'Live-action video production'] },
+  { title: 'Event Marketing and Experiential Design', items: ['Event branding and creative design', 'Trade show and conference booths', 'Experiential marketing campaigns', 'Digital and hybrid event support', 'Branded promotional materials', 'Post-event content and engagement strategy'] },
+];
+---
+<Layout title="Services" description="Consulting and marketing services from Red Door Collaborative - from embedded consultants to full-service brand, content, design, video, and event marketing.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Services</span>
+      <h1>Collaborative marketing from concept to launch.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="grid grid-3">
+        {pillars.map((p) => (
+          <div class="card">
+            <h3>{p.title}</h3>
+            <p>{p.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Consulting</span>
+      <h2>Add the right people, exactly where you need them.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        {consulting.map((c) => (
+          <div class="card">
+            <h3>{c.title}</h3>
+            <p>{c.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Marketing</span>
+      <h2>Everything a brand's story needs, under one roof.</h2>
+      <div class="grid grid-2" style="margin-top: 2.5rem;">
+        {marketing.map((m) => (
+          <div class="card">
+            <h3>{m.title}</h3>
+            <div class="tag-list">
+              {m.items.map((item) => <span class="tag">{item}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>

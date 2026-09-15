@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const clients = ['Microsoft', 'Salesforce', 'Databricks', 'Procraft', 'Meta'];
+
+const caseStudies = [
+  { name: 'Azure Essentials', client: 'Microsoft', services: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
+  { name: 'Visual Studio Subscriptions Benefits', client: 'Microsoft / Visual Studio Subscriptions', services: 'Digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
+  { name: 'Procraft Digital Course', client: 'Procraft', services: 'Brand strategy, content marketing, video production, graphic design' },
+];
+
+const projects = [
+  { name: 'Managing ESG goals through FinOps', client: 'Microsoft', services: 'Content marketing, graphic design' },
+  { name: 'Azure Social Media', client: 'Microsoft', services: 'Social media marketing, graphic design, video marketing' },
+  { name: 'Visual Studio Subscriptions Benefits Video', client: 'Microsoft', services: 'Graphic design, video marketing, content marketing, social media marketing' },
+  { name: 'A Guide to Data Warehousing in the Lakehouse', client: 'Databricks', services: 'Content marketing, graphic design' },
+  { name: 'Red Door Collaborative Social Media', client: 'Red Door Collaborative', services: 'Social media marketing, graphic design, video marketing' },
+  { name: 'The Azure Essentials Show', client: 'Microsoft', services: 'Video marketing and production, graphic design, content marketing' },
+];
+---
+<Layout title="Work" description="Case studies and projects from Red Door Collaborative, built with Microsoft, Salesforce, Databricks, Procraft, and more.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Our work</span>
+      <h1>Storytelling for a dynamic landscape.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="logo-strip">
+        {clients.map((c) => <span>{c}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Case studies</span>
+      <h2>Featured work.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        {caseStudies.map((cs) => (
+          <div class="card">
+            <h3>{cs.name}</h3>
+            <p class="case-client">{cs.client}</p>
+            <p>{cs.services}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Projects</span>
+      <h2>More from the studio.</h2>
+      <div class="grid grid-3" style="margin-top: 2.5rem;">
+        {projects.map((p) => (
+          <div class="card">
+            <h3>{p.name}</h3>
+            <p class="case-client">{p.client}</p>
+            <p>{p.services}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>
+
+<style>
+  .case-client { color: var(--color-red-bright); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// TODO (Brian): replace this placeholder with your real Web3Forms access key.
+// Get one free at https://web3forms.com - sign up with an RDC inbox, no
+// backend or account approval needed beyond email verification, and the
+// key is safe to keep in this public file (Web3Forms access keys are
+// meant to be client-side).
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
+---
+<Layout title="Contact" description="Get in touch with Red Door Collaborative - offices in Bellevue, WA and Carlsbad, CA.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Ready to get to work?</h1>
+      <p class="hero-sub">We collaborate across the globe. Find out what we can do together.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container contact-grid">
+      <div class="card">
+        <h2>Send us a message</h2>
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="New inquiry from reddoorcollaborative.com" />
+          <input type="hidden" name="redirect" value="https://www.reddoorcollaborative.com/contact-success" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" />
+          </div>
+          <div>
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+
+      <div class="offices">
+        <span class="eyebrow">Our HQs</span>
+        <div class="card office-card">
+          <h3>Washington</h3>
+          <p>2018 156th Ave NE, Suite 100<br />Bellevue, WA 98007</p>
+        </div>
+        <div class="card office-card">
+          <h3>California</h3>
+          <p>701 Palomar Airport Rd, Suite 300<br />Carlsbad, CA 92011</p>
+        </div>
+        <div class="card office-card">
+          <h3>Phone</h3>
+          <p><a href="tel:+17196226141">(719) 622-6141</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .offices { display: flex; flex-direction: column; gap: 1rem; }
+  .office-card p { margin: 0; }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
