@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const meta = [
+  { label: 'Company', value: 'Microsoft' },
+  { label: 'Asset types', value: 'Video, eBook, presentation, illustration' },
+  { label: 'Services used', value: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
+];
+---
+<Layout title="Azure Essentials" description="How Red Door Collaborative built the Azure Essentials brand identity and marketing suite for Microsoft.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Case study &middot; Microsoft</span>
+      <h1>Azure Essentials.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="grid grid-3">
+        {meta.map((m) => (
+          <div class="card">
+            <h3>{m.label}</h3>
+            <p>{m.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">It starts with a need</span>
+      <h2>Reimagining how a new Azure offering is presented and marketed.</h2>
+      <p>Microsoft approached us to reimagine a way to present and market a new offering from Azure.</p>
+      <p>Without an official name, they needed us to develop a brand identity and language that reflected the current Azure style, while also introducing a fresh, distinctive visual vibe for their new offering.</p>
+      <p>With tight deadlines, multiple stakeholders, and numerous departments, Microsoft needed an agency that could learn existing guidelines and create something bold and compelling.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">That we shape into a solution</span>
+      <h2>Becoming an extension of the internal team.</h2>
+      <p>From the beginning, we were more than just an agency&mdash;we were an extension of their internal team, shaping the identity of what became Azure Essentials (AE). We developed the design, refined the messaging, and created a suite of marketing and communication assets that established AE as a distinct, yet integral, part of Azure.</p>
+      <div class="grid grid-2" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Visual identity and branding</h3>
+          <p>While Microsoft provided the name, we built the Azure Essentials visual brand. We introduced a new color gradient beyond standard Azure templates, giving AE a unique yet recognizable presence within the broader Azure ecosystem.</p>
+        </div>
+        <div class="card">
+          <h3>Video production</h3>
+          <p>Our team worked closely with stakeholders to script, design, and produce both internal and external videos that introduced AE and explained its value to customers.</p>
+        </div>
+        <div class="card">
+          <h3>Presentation and communication assets</h3>
+          <p>We created and rebranded internal informational decks and external customer-facing guidance decks, ensuring clarity and consistency.</p>
+        </div>
+        <div class="card">
+          <h3>Event and marketing materials</h3>
+          <p>To support launch events, we developed event visuals, email banners, and social media assets to make sure that AE had a strong and consistent presence.</p>
+        </div>
+        <div class="card">
+          <h3>Editorial services</h3>
+          <p>Leveraging our design work, we created e-books and blog content that communicated AE's value to customers.</p>
+        </div>
+      </div>
+      <p style="margin-top: 2rem;">Unlike traditional agencies, we functioned as an internal partner with Microsoft, collaborating with Microsoft to anticipate problems, brainstorm solutions, and develop fresh marketing solutions that spoke their brand language.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <blockquote class="quote">
+        We call it collaboration in action.
+      </blockquote>
+      <p class="quote-attribution">Our partnership with Microsoft Azure is an example of what makes us different. While other agencies struggle with rigid processes and cookie-cutter outcomes, we thrive in complexity. Our nimble, integrated approach means that every asset we create together &ndash; from videos to presentations to editorial content &ndash; aligns with your brand and vision.</p>
+      <p>For Microsoft, we weren't just an agency. We were a strategic partner, helping them bring a new vision to life. That's what great creative collaboration is all about.</p>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>
