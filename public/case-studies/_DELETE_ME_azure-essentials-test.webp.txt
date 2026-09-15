@@ -1,0 +1,3 @@
+This file, and public/case-studies/azure-essentials-test.webp, are stray
+artifacts from testing binary file uploads through the GitHub MCP server
+and are not valid images. Safe to delete both.

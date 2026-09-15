@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+// Served straight from this repo's asset-library/ archive (already
+// committed on main) via raw.githubusercontent.com, rather than
+// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
+// so this is a stopgap -- ideally this becomes a self-hosted copy in
+// public/case-studies/ (or a proper CDN in front of the repo) later.
+const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_procraft-courses-campaign.png';
+
+const meta = [
+  { label: 'Company', value: 'Procraft Media' },
+  { label: 'Asset types', value: 'Course, video, presentation, illustration, guideline' },
+  { label: 'Services used', value: 'Brand strategy, digital marketing, content marketing, video marketing, graphic design' },
+];
+
+const assets = [
+  'High-quality production videos filmed on-location',
+  'Motion graphics that visualized scientific principles behind equipment positioning',
+  'Interactive tutorials, photography, and animated demonstrations',
+];
+---
+<Layout title="Procraft Digital Course" description="How Red Door Collaborative turned Procraft's technical training manual into a 40-hour digital certification program.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Case study &middot; Procraft Media</span>
+      <h1>Procraft digital course.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <img src={heroImage} alt="Hand-drawn sketch of audio production equipment controls, reflecting Procraft's technical training material" class="case-hero-image" width="900" height="900" loading="eager" />
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="grid grid-3">
+        {meta.map((m) => (
+          <div class="card">
+            <h3>{m.label}</h3>
+            <p>{m.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Building from the ground up</span>
+      <h2>Turning a technical manual into an online certification program.</h2>
+      <p>Procraft is a leading A/V integrator known for best-in-class hardware installations in high-end editing bays and professional recording studios. But they faced a significant challenge: how to find and train qualified technicians in their field.</p>
+      <p>Their training materials contain detailed and scientific instructions covering topics in audio, video, lighting, networking design, and installation. For trainees just getting started, learning the material was time-consuming and technical, and it lived in an outdated manual.</p>
+      <p>Procraft wanted to digitize their comprehensive technical training into an accessible, online certification program that could function as an internal training tool and an industry-wide educational resource.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Demonstrating our collaborative approach</span>
+      <h2>Reimagining training from the ground up.</h2>
+      <p>Rather than simply digitizing their manual, we collaborated with Procraft to reimagine their training from the ground up.</p>
+      <p>We began by talking with their experts, learning their technical requirements, and gaining an understanding of the journey to transform beginners into expert technicians. Then, we recruited a specialized content writer who could work directly with Procraft's senior engineers.</p>
+      <p>Together, our writer and their experts translated complex technical concepts into accessible learning modules that emphasized the latest learning pedagogies. The result was a multimedia learning experience that explained each concept, and in a style that maintained Procraft's distinct brand identity and technical accuracy. Some of the assets included:</p>
+      <div class="tag-list">
+        {assets.map((a) => <span class="tag">{a}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <blockquote class="quote">
+        A lasting impact.
+      </blockquote>
+      <p class="quote-attribution">The result is a 40-hour certification program that revolutionized Procraft's training approach. The program now provides a pathway to onboard new technicians and establishes the company's training materials as the gold standard in the industry.</p>
+      <p>Most importantly, our collaboration went beyond Procraft's expectations. We digitized their training, of course, but we also built an immersive learning experience that helps an individual discover their interests within the industry and builds Procraft's prospective talent pipeline.</p>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>
+
+<style>
+  .case-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+</style>

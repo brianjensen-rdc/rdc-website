@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
+const BASE = import.meta.env.BASE_URL;
+
 const clients = ['Microsoft', 'Salesforce', 'Databricks', 'Procraft', 'Meta'];
 
 const caseStudies = [
-  { name: 'Azure Essentials', client: 'Microsoft', services: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
-  { name: 'Visual Studio Subscriptions Benefits', client: 'Microsoft / Visual Studio Subscriptions', services: 'Digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
-  { name: 'Procraft Digital Course', client: 'Procraft', services: 'Brand strategy, content marketing, video production, graphic design' },
+  { name: 'Azure Essentials', client: 'Microsoft', services: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-azure-essentials/' },
+  { name: 'Visual Studio Subscriptions Benefits', client: 'Microsoft / Visual Studio Subscriptions', services: 'Digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-vss-benefits/' },
+  { name: 'Procraft Digital Course', client: 'Procraft', services: 'Brand strategy, content marketing, video production, graphic design', href: 'case-study-procraft/' },
 ];
 
 const projects = [
@@ -41,11 +43,12 @@ const projects = [
       <h2>Featured work.</h2>
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {caseStudies.map((cs) => (
-          <div class="card">
+          <a class="card case-card" href={`${BASE}${cs.href}`}>
             <h3>{cs.name}</h3>
             <p class="case-client">{cs.client}</p>
             <p>{cs.services}</p>
-          </div>
+            <span class="case-link">Read the case study &rarr;</span>
+          </a>
         ))}
       </div>
     </div>
@@ -72,4 +75,7 @@ const projects = [
 
 <style>
   .case-client { color: var(--color-red-bright); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .case-card { display: block; transition: border-color 0.15s ease, transform 0.15s ease; }
+  .case-card:hover { border-color: var(--color-red-bright); transform: translateY(-2px); }
+  .case-link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--color-red-bright); }
 </style>

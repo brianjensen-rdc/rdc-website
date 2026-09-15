@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+// Served straight from this repo's asset-library/ archive (already
+// committed on main) via raw.githubusercontent.com, rather than
+// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
+// so this is a stopgap -- ideally this becomes a self-hosted copy in
+// public/case-studies/ (or a proper CDN in front of the repo) later.
+const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_visual-studio-ide-campaign.png';
+
+const meta = [
+  { label: 'Company', value: 'Microsoft' },
+  { label: 'Asset types', value: 'Video, eBook, presentation, illustration, infographics' },
+  { label: 'Services used', value: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
+];
+
+const results = [
+  'Updated presentation decks with refreshed messaging',
+  'Custom infographics to visualize and explain complex subscription benefits',
+  'Social media content and advertising',
+  'Conference booth materials for VSLive! events',
+  'Engaging promotional videos that demonstrated the breadth of VSS benefits',
+];
+---
+<Layout title="VSS Benefits" description="How Red Door Collaborative helped Microsoft close the communication gap on Visual Studio Subscription benefits.">
+  <section class="hero tight">
+    <div class="container">
+      <span class="eyebrow">Case study &middot; Microsoft</span>
+      <h1>VSS Benefits campaign.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <img src={heroImage} alt="Illustration of a laptop with developer tooling icons, representing the Visual Studio Subscriptions benefits campaign" class="case-hero-image" width="900" height="900" loading="eager" />
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <div class="grid grid-3">
+        {meta.map((m) => (
+          <div class="card">
+            <h3>{m.label}</h3>
+            <p>{m.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Significant market headwinds</span>
+      <h2>Closing a communication gap on enterprise benefits.</h2>
+      <p>Microsoft's Visual Studio is an integrated developer environment (IDE) that software developers use to write, edit, and build code. However, customers who purchased a Visual Studio subscription (VSS) found that their decision was far from simple: with multiple subscription options and different enterprise-level benefits, many customers were using VSS without accessing their unique benefits. Additionally, the VSS customer base was increasingly migrating to its free, browser-based option, VS Code.</p>
+      <p>With the help of our team of embedded consultants already working within VSS, we developed a plan to close a significant communication gap about the benefits included with enterprise-level subscriptions, and create updated marketing materials to communicate the VSS value proposition to administrators and developers alike.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">A holistic approach</span>
+      <h2>A top-to-bottom transformation of the VSS marketing presence.</h2>
+      <p>We began this project as learners. Working with our own VSS embedded consultants and the creative team, we set out to learn their marketing and messaging challenges, which included a comprehensive review of current marketing assets.</p>
+      <p>We then worked closely with the client to develop a messaging and positioning framework that established a consistent tone, style, and voice. The result was a top to bottom transformation of the VSS marketing presence including:</p>
+      <div class="tag-list">
+        {results.map((r) => <span class="tag">{r}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <blockquote class="quote">
+        Measurable results.
+      </blockquote>
+      <p class="quote-attribution">The VSS brand refresh not only updated messaging and positioning guidelines, but it also clarified market confusion of VSS's own product line. Red Door played a key role by helping VSS scale their marketing campaigns and encourage customers to take advantage of all the benefits a Visual Studio Subscription offers.</p>
+      <p>The result was an uptick in engagement across social media and a clearer messaging model that prepared VSS to thrive in a competitive business landscape.</p>
+    </div>
+  </section>
+
+  <CTASection heading="Let's collaborate." />
+</Layout>
+
+<style>
+  .case-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+</style>
