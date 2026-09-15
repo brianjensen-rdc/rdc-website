@@ -3,6 +3,14 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
+// Importing the woff2 files directly (rather than hardcoding a path) gives us
+// the real build-time URL - correctly hashed and base-prefixed for GitHub
+// Pages - so these <link rel="preload"> tags always point at the exact same
+// files the CSS's @font-face rules resolve to.
+import fontRegular from '../fonts/suisse-intl-400-normal.woff2';
+import fontSemibold from '../fonts/suisse-intl-600-normal.woff2';
+import fontBold from '../fonts/suisse-intl-700-normal.woff2';
+
 interface Props {
   title: string;
   description?: string;
@@ -22,6 +30,14 @@ const BASE = import.meta.env.BASE_URL;
     <link rel="icon" type="image/svg+xml" href={`${BASE}favicon.svg`} />
     <meta name="description" content={description} />
     <title>{title} - Red Door Collaborative</title>
+
+    <!-- Preload the three weights used above the fold on first paint (body
+         copy, buttons/eyebrows, headings) so the browser starts fetching
+         them immediately instead of discovering them only after parsing
+         global.css - this is what removes the fallback-font flash. -->
+    <link rel="preload" href={fontRegular} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={fontSemibold} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={fontBold} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <Nav />
