@@ -86,6 +86,24 @@
   font-display: swap;
 }
 
+/* --- Metric-matched fallback ---
+   Sized and shaped to occupy the same space as Suisse Intl Regular, using
+   Suisse's own font metrics (unitsPerEm 1000, typo ascent/descent 1011/-286,
+   xAvgCharWidth 643) scaled against Arial/Liberation Sans's real metrics
+   (unitsPerEm 2048, xAvgCharWidth 1187). Without this, the fallback system
+   font and Suisse render text at different widths/line-heights, so the swap
+   from one to the other reflows the page (the "jump" effect) rather than
+   just changing letterforms in place. Referencing this face ahead of the
+   real Suisse Intl weights in the stack below removes that reflow. */
+@font-face {
+  font-family: "Suisse Intl Fallback";
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans"), local("Nimbus Sans");
+  size-adjust: 110.94%;
+  ascent-override: 91.13%;
+  descent-override: 25.78%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* --- Brand palette (verbatim from guide) --- */
   --color-squid: #0D1724;
@@ -115,10 +133,11 @@
   --gradient-brand: linear-gradient(160deg, var(--color-wine), var(--color-coral));
 
   /* Typeface: brand guide specifies Suisse, and RDC has a proper license -
-     self-hosted above via @font-face. Single family for headings and body,
-     same way the guide uses it (weight/size vary, family doesn't). */
-  --font-heading: "Suisse Intl", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Suisse Intl", "Segoe UI", system-ui, sans-serif;
+     self-hosted above via @font-face. The metric-matched fallback sits
+     between "Suisse Intl" and generic sans-serif so the pre-load state
+     already occupies the same layout space the real font will use. */
+  --font-heading: "Suisse Intl", "Suisse Intl Fallback", Arial, sans-serif;
+  --font-body: "Suisse Intl", "Suisse Intl Fallback", Arial, sans-serif;
 
   --max-width: 1180px;
   --radius: 14px;
