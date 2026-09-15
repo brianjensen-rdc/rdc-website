@@ -1,32 +1,36 @@
 ---
+const BASE = import.meta.env.BASE_URL;
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/work', label: 'Work' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/contact', label: 'Contact' },
+  { path: '', label: 'Home' },
+  { path: 'about', label: 'About' },
+  { path: 'services', label: 'Services' },
+  { path: 'work', label: 'Work' },
+  { path: 'careers', label: 'Careers' },
+  { path: 'contact', label: 'Contact' },
 ];
 const currentPath = Astro.url.pathname;
 ---
 <header class="site-nav">
   <div class="container nav-inner">
-    <a href="/" class="wordmark" aria-label="Red Door Collaborative home">
+    <a href={BASE} class="wordmark" aria-label="Red Door Collaborative home">
       <span class="wordmark-red">RED DOOR</span><span class="wordmark-white">COLLABORATIVE</span>
     </a>
     <nav aria-label="Primary">
       <ul>
-        {navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              aria-current={currentPath === link.href ? 'page' : undefined}
-            >{link.label}</a>
-          </li>
-        ))}
+        {navLinks.map((link) => {
+          const href = `${BASE}${link.path}`;
+          return (
+            <li>
+              <a
+                href={href}
+                aria-current={currentPath === href ? 'page' : undefined}
+              >{link.label}</a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
-    <a href="/contact" class="btn btn-primary nav-cta">Hire us</a>
+    <a href={`${BASE}contact`} class="btn btn-primary nav-cta">Hire us</a>
   </div>
 </header>
 
