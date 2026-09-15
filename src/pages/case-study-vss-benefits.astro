@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-// Hero image is served from Squarespace's asset CDN (the same source the
-// live site currently uses). A local copy also lives in asset-library/,
-// but that folder isn't wired into the Astro build yet -- once the site
-// is ready to fully retire Squarespace, swap this for a self-hosted copy
-// in public/case-studies/ and update the src below.
-const heroImage = 'https://images.squarespace-cdn.com/content/678693bf6fa87d3625a6a5ef/27fe3ad7-f955-4383-b5e8-d395bc8b6ab6/thumbnails_visual-studio-ide-campaign.png?content-type=image%2Fpng';
+// Served straight from this repo's asset-library/ archive (already
+// committed on main) via raw.githubusercontent.com, rather than
+// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
+// so this is a stopgap -- ideally this becomes a self-hosted copy in
+// public/case-studies/ (or a proper CDN in front of the repo) later.
+const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_visual-studio-ide-campaign.png';
 
 const meta = [
   { label: 'Company', value: 'Microsoft' },
