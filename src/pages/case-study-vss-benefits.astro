@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
+// Hero image is served from Squarespace's asset CDN (the same source the
+// live site currently uses). A local copy also lives in asset-library/,
+// but that folder isn't wired into the Astro build yet -- once the site
+// is ready to fully retire Squarespace, swap this for a self-hosted copy
+// in public/case-studies/ and update the src below.
+const heroImage = 'https://images.squarespace-cdn.com/content/678693bf6fa87d3625a6a5ef/27fe3ad7-f955-4383-b5e8-d395bc8b6ab6/thumbnails_visual-studio-ide-campaign.png?content-type=image%2Fpng';
+
 const meta = [
   { label: 'Company', value: 'Microsoft' },
   { label: 'Asset types', value: 'Video, eBook, presentation, illustration, infographics' },
@@ -21,6 +28,12 @@ const results = [
     <div class="container">
       <span class="eyebrow">Case study &middot; Microsoft</span>
       <h1>VSS Benefits campaign.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <img src={heroImage} alt="Illustration of a laptop with developer tooling icons, representing the Visual Studio Subscriptions benefits campaign" class="case-hero-image" width="900" height="900" loading="eager" />
     </div>
   </section>
 
@@ -70,3 +83,14 @@ const results = [
 
   <CTASection heading="Let's collaborate." />
 </Layout>
+
+<style>
+  .case-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+</style>

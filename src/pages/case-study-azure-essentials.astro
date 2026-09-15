@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
+// Hero image is served from Squarespace's asset CDN (the same source the
+// live site currently uses). A local copy also lives in asset-library/,
+// but that folder isn't wired into the Astro build yet -- once the site
+// is ready to fully retire Squarespace, swap this for a self-hosted copy
+// in public/case-studies/ and update the src below.
+const heroImage = 'https://images.squarespace-cdn.com/content/678693bf6fa87d3625a6a5ef/9f362505-8f45-44c1-b4fe-d69cf85c8696/thumbnails_azure-essentials-campaign.png?content-type=image%2Fpng';
+
 const meta = [
   { label: 'Company', value: 'Microsoft' },
   { label: 'Asset types', value: 'Video, eBook, presentation, illustration' },
@@ -13,6 +20,12 @@ const meta = [
     <div class="container">
       <span class="eyebrow">Case study &middot; Microsoft</span>
       <h1>Azure Essentials.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <img src={heroImage} alt="Isometric illustration of the Azure Essentials cloud identity, representing FinOps, governance, and platform tooling" class="case-hero-image" width="900" height="900" loading="eager" />
     </div>
   </section>
 
@@ -82,3 +95,14 @@ const meta = [
 
   <CTASection heading="Let's collaborate." />
 </Layout>
+
+<style>
+  .case-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+</style>

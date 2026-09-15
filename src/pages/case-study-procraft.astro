@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
+// Hero image is served from Squarespace's asset CDN (the same source the
+// live site currently uses). A local copy also lives in asset-library/,
+// but that folder isn't wired into the Astro build yet -- once the site
+// is ready to fully retire Squarespace, swap this for a self-hosted copy
+// in public/case-studies/ and update the src below.
+const heroImage = 'https://images.squarespace-cdn.com/content/678693bf6fa87d3625a6a5ef/3e2b163f-5e26-4fc7-bbf8-8e3349ee1f09/thumbnails_procraft-courses-campaign.png?content-type=image%2Fpng';
+
 const meta = [
   { label: 'Company', value: 'Procraft Media' },
   { label: 'Asset types', value: 'Course, video, presentation, illustration, guideline' },
@@ -19,6 +26,12 @@ const assets = [
     <div class="container">
       <span class="eyebrow">Case study &middot; Procraft Media</span>
       <h1>Procraft digital course.</h1>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <img src={heroImage} alt="Hand-drawn sketch of audio production equipment controls, reflecting Procraft's technical training material" class="case-hero-image" width="900" height="900" loading="eager" />
     </div>
   </section>
 
@@ -50,7 +63,7 @@ const assets = [
       <span class="eyebrow">Demonstrating our collaborative approach</span>
       <h2>Reimagining training from the ground up.</h2>
       <p>Rather than simply digitizing their manual, we collaborated with Procraft to reimagine their training from the ground up.</p>
-      <p>We began by talking with their experts, learning their technical requirements, and gaining an understanding of the journey to transform beginners into expert technicians. Then, we recruited a specialized content writer who could work directly with Procraft's senior engineers.</p>
+      <p>We began by talking with their experts, learning their technical requirements, and gaining an understanding of the journourney to transform beginners into expert technicians. Then, we recruited a specialized content writer who could work directly with Procraft's senior engineers.</p>
       <p>Together, our writer and their experts translated complex technical concepts into accessible learning modules that emphasized the latest learning pedagogies. The result was a multimedia learning experience that explained each concept, and in a style that maintained Procraft's distinct brand identity and technical accuracy. Some of the assets included:</p>
       <div class="tag-list">
         {assets.map((a) => <span class="tag">{a}</span>)}
@@ -70,3 +83,14 @@ const assets = [
 
   <CTASection heading="Let's collaborate." />
 </Layout>
+
+<style>
+  .case-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+</style>
