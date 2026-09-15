@@ -15,10 +15,25 @@ const meta = [
   { label: 'Services used', value: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing' },
 ];
 
+// Nearly every Azure-Essentials-specific still image in the manifest
+// that's already committed to asset-library/ (excludes the separate
+// "Azure Socials" and "Azure Essentials Show" projects, which are
+// different Work-page items, not this campaign).
 const gallery = [
   { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials-Dark_640x320.png', alt: 'Azure Essentials dark brand lockup', caption: 'Visual identity: dark brand lockup' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials-Light_640x320.png', alt: 'Azure Essentials light brand lockup', caption: 'Visual identity: light brand lockup' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azure%20Essentials_thumbnail.png', alt: 'Azure Essentials campaign thumbnail artwork', caption: 'Visual identity: campaign thumbnail' },
   { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentialsVideo-OpeningFrame.png', alt: 'Opening frame from the Azure Essentials intro video', caption: 'Video production: intro video opening frame' },
   { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Event%20style%20guide_AzureEssentialsTechAccelerator.png', alt: 'Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: Tech Accelerator style guide' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials_email%20banner%201.png', alt: 'Azure Essentials email banner, version one', caption: 'Email marketing: banner v1' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials_email%20banner%202.png', alt: 'Azure Essentials email banner, version two', caption: 'Email marketing: banner v2' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentials_gif_v1.gif', alt: 'Animated Azure Essentials identity showcase', caption: 'Visual identity: animated showcase' },
+];
+
+// Campaign videos, embedded directly rather than linked out.
+const videos = [
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentials_Intro-2024_v03-00.mp4', caption: 'Intro video: introducing Azure Essentials' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azure%20Essentials%20%E2%80%93%20Customer%20Presentation_2024_final-portfolioedit.mp4', caption: 'Customer-facing presentation video' },
 ];
 ---
 <Layout title="Azure Essentials" description="How Red Door Collaborative built the Azure Essentials brand identity and marketing suite for Microsoft.">
@@ -106,6 +121,21 @@ const gallery = [
 
   <section class="tight">
     <div class="container">
+      <span class="eyebrow">See it in motion</span>
+      <h2>Campaign videos.</h2>
+      <div class="grid grid-2" style="margin-top: 2rem;">
+        {videos.map((v) => (
+          <figure class="asset-card video-card">
+            <video src={v.src} controls preload="none" poster={heroImage}></video>
+            <figcaption>{v.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
       <blockquote class="quote">
         We call it collaboration in action.
       </blockquote>
@@ -144,5 +174,13 @@ const gallery = [
     padding: 0.85rem 1rem;
     font-size: 0.85rem;
     color: var(--color-text-muted);
+  }
+
+  .video-card video {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    background: #000;
   }
 </style>
