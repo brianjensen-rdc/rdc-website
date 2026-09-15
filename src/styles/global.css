@@ -1,31 +1,40 @@
 /* Red Door Collaborative - brand tokens
-   Pulled from Brand Guidelines v1.0: Squid / Wine / Coral / Mist / White / Gray.
-   Old --color-red / --color-red-bright names are kept as aliases to --color-coral
-   so existing component styles don't need to change. */
+   Sourced from Brand Guidelines v1.0. Legacy variable names (--color-bg,
+   --color-red, etc.) are kept as aliases so existing page markup doesn't
+   need to change - only the values underneath moved to real brand colors. */
 :root {
-  /* Brand palette */
+  /* --- Brand palette (verbatim from guide) --- */
   --color-squid: #0D1724;
   --color-wine: #7F0046;
   --color-coral: #FF4F58;
-  --color-coral-bright: #FF6B73;
   --color-mist: #ABDCE0;
   --color-white: #FFFFFF;
   --color-gray: #F3F3F3;
 
-  /* Site tokens (mapped onto the brand palette) */
+  /* Derived surface tones (not literal brand swatches, just tints of Squid
+     for layered dark surfaces - cards, nav, footer) */
+  --color-squid-raised: #16212F;
+  --color-squid-raised-2: #1E2C3D;
+  --color-border: #263344;
+
+  /* --- Legacy aliases used throughout existing components/pages --- */
   --color-bg: var(--color-squid);
-  --color-bg-raised: #142236;
-  --color-bg-raised-2: #1c3049;
-  --color-border: #26374d;
+  --color-bg-raised: var(--color-squid-raised);
+  --color-bg-raised-2: var(--color-squid-raised-2);
   --color-text: var(--color-gray);
-  --color-text-muted: #9AAAC0;
+  --color-text-muted: rgba(243, 243, 243, 0.62);
+  --color-red: var(--color-wine);
+  --color-red-bright: var(--color-coral);
+  --color-white: #FFFFFF;
 
-  /* Aliases kept for backward compatibility with existing component CSS */
-  --color-red: var(--color-coral);
-  --color-red-bright: var(--color-coral-bright);
+  /* Brand gradient (Wine -> Coral), available for hero/CTA treatments */
+  --gradient-brand: linear-gradient(160deg, var(--color-wine), var(--color-coral));
 
-  --gradient-brand: linear-gradient(135deg, var(--color-wine), var(--color-coral));
-
+  /* Typeface: brand guide specifies Suisse (w/ Proxima Nova shown as an
+     alternate). Neither is freely licensed for web use, so Inter stands in -
+     a comparable functional grotesque, used as a single family for
+     headings and body the same way Suisse is used in the guide. Swap here
+     if/when a licensed Suisse or Proxima Nova web font is available. */
   --font-heading: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
 
@@ -89,14 +98,14 @@ section.tight { padding: 3rem 0; }
   font-size: 0.95rem;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .btn-primary {
-  background: var(--color-red);
-  color: var(--color-white);
+  background: var(--color-red-bright);
+  color: var(--color-squid);
 }
-.btn-primary:hover { background: var(--color-red-bright); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--color-mist); transform: translateY(-1px); }
 
 .btn-outline {
   background: transparent;
