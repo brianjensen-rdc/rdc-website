@@ -20,6 +20,12 @@ const assets = [
   'Motion graphics that visualized scientific principles behind equipment positioning',
   'Interactive tutorials, photography, and animated demonstrations',
 ];
+
+const gallery = [
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_01.png', alt: 'Procraft branding guidelines cover page', caption: 'Brand guidelines: cover' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_05%20%281%29.png', alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
+  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_09%20%281%29.png', alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
+];
 ---
 <Layout title="Procraft Digital Course" description="How Red Door Collaborative turned Procraft's technical training manual into a 40-hour digital certification program.">
   <section class="hero tight">
@@ -73,6 +79,21 @@ const assets = [
 
   <section class="tight">
     <div class="container">
+      <span class="eyebrow">Selected assets</span>
+      <h2>A closer look at the work.</h2>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {gallery.map((g) => (
+          <figure class="asset-card">
+            <img src={g.src} alt={g.alt} loading="lazy" />
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
       <blockquote class="quote">
         A lasting impact.
       </blockquote>
@@ -92,5 +113,24 @@ const assets = [
     height: auto;
     margin: 0 auto;
     border-radius: 16px;
+  }
+
+  .asset-card {
+    margin: 0;
+    background: var(--color-bg-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .asset-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .asset-card figcaption {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
   }
 </style>
