@@ -2,11 +2,11 @@
 const BASE = import.meta.env.BASE_URL;
 const navLinks = [
   { path: '', label: 'Home' },
-  { path: 'about', label: 'About' },
-  { path: 'services', label: 'Services' },
-  { path: 'work', label: 'Work' },
-  { path: 'careers', label: 'Careers' },
-  { path: 'contact', label: 'Contact' },
+  { path: 'about/', label: 'About' },
+  { path: 'services/', label: 'Services' },
+  { path: 'work/', label: 'Work' },
+  { path: 'careers/', label: 'Careers' },
+  { path: 'contact/', label: 'Contact' },
 ];
 const currentPath = Astro.url.pathname;
 ---
@@ -30,7 +30,7 @@ const currentPath = Astro.url.pathname;
         })}
       </ul>
     </nav>
-    <a href={`${BASE}contact`} class="btn btn-primary nav-cta">Hire us</a>
+    <a href={`${BASE}contact/`} class="btn btn-primary nav-cta">Hire us</a>
   </div>
 </header>
 

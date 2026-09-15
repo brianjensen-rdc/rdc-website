@@ -7,5 +7,5 @@ export default defineConfig({
   // is built from import.meta.env.BASE_URL, so once DNS points at the
   // custom domain this can simply become '/' (or be removed) with no
   // other changes needed.
-  base: '/rdc-website',
+  base: '/rdc-website/',
 });
