@@ -6,10 +6,12 @@ const { heading = "Let's collaborate." } = Astro.props;
 const BASE = import.meta.env.BASE_URL;
 ---
 <!-- Closing call to action: the design system's CtaBanner, dark tone (its
-     default). Coral primary button and Coral outline secondary on Squid. -->
+     default). Coral primary button and Coral outline secondary on Squid, with
+     the Coral hairline "rd" (secondary icon) as the watermark. -->
 <section class="cta-section">
   <div class="container">
     <div class="cta-banner">
+      <img class="cta-mark" src={`${BASE}logo/rdc-secondary-icon-full-color.svg`} alt="" aria-hidden="true" width="266" height="240" />
       <h2>{heading}</h2>
       <div class="cta-row">
         <a href={`${BASE}contact/`} class="btn btn-primary">Hire us</a>
@@ -22,6 +24,8 @@ const BASE = import.meta.env.BASE_URL;
 <style>
   .cta-section { padding: var(--space-12) 0 0; }
   .cta-banner {
+    position: relative;
+    overflow: hidden;
     background: var(--squid);
     border-radius: var(--radius-xl);
     padding: var(--space-12);
@@ -30,6 +34,15 @@ const BASE = import.meta.env.BASE_URL;
     align-items: flex-start;
     gap: var(--space-6);
   }
+  .cta-mark {
+    position: absolute;
+    right: 32px;
+    bottom: -56px;
+    height: 240px;
+    width: auto;
+    pointer-events: none;
+  }
+  .cta-banner h2, .cta-banner .cta-row { position: relative; }
   .cta-banner h2 {
     margin: 0;
     color: var(--white);
@@ -38,5 +51,11 @@ const BASE = import.meta.env.BASE_URL;
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
-  @media (max-width: 768px) { .cta-banner { padding: var(--space-6); } .cta-banner h2 { font-size: 28px; } }
+  @media (max-width: 768px) {
+    .cta-banner { padding: var(--space-6); }
+    .cta-banner h2 { font-size: 28px; }
+    /* Hidden on phones: at a size that clears the buttons the hairline mark
+       would fall below its 120px minimum. */
+    .cta-mark { display: none; }
+  }
 </style>
