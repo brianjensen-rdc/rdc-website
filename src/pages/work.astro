@@ -74,8 +74,9 @@ const projects = [
 </Layout>
 
 <style>
-  .case-client { color: var(--color-red-bright); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .case-client { color: var(--accent-text); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; }
   .case-card { display: block; transition: border-color 0.15s ease, transform 0.15s ease; }
-  .case-card:hover { border-color: var(--color-red-bright); transform: translateY(-2px); }
-  .case-link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--color-red-bright); }
+  .case-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .case-link { display: inline-block; margin-top: var(--space-4); font-size: 15px; font-weight: 600; color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+  @media (max-width: 768px) { .case-client { font-size: 11px; } .case-link { font-size: 14px; } }
 </style>
