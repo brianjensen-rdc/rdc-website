@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import valuesArt from '../media/careers/values.png';
+import remoteWork from '../media/careers/remote-work.png';
+import mbeBadge from '../media/careers/minority-business-badge.png';
 
 const values = [
   { title: 'Responsive', copy: 'Our commitment is to provide you with timely communication and feedback during the recruitment process.' },
@@ -33,13 +37,16 @@ const benefits = [
     <div class="container">
       <span class="eyebrow">What we value</span>
       <h2>How we show up for candidates.</h2>
-      <div class="grid grid-4" style="margin-top: 2.5rem;">
-        {values.map((v) => (
-          <div class="card">
-            <h3>{v.title}</h3>
-            <p>{v.copy}</p>
-          </div>
-        ))}
+      <div class="media-split values-split" style="margin-top: 2.5rem;">
+        <Image src={valuesArt} alt="Illustration of people, a heart, and conversation shapes" widths={[368, 736]} width={736} sizes="(max-width: 900px) 80vw, 480px" />
+        <div class="grid grid-2">
+          {values.map((v) => (
+            <div class="card">
+              <h3>{v.title}</h3>
+              <p>{v.copy}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -47,11 +54,13 @@ const benefits = [
   <section class="tight">
     <div class="container two-col">
       <div>
+        <Image src={remoteWork} alt="Illustration of a remote team connected across locations" class="two-col-media" widths={[640, 1280]} width={1280} sizes="(max-width: 800px) 92vw, 600px" />
         <span class="eyebrow">How we work</span>
         <h2>Fully remote, globally sourced.</h2>
         <p>As a fully remote company, we get to draw from a deep well of applications to work on exciting projects all over the world. Many of our roles are remote, while some may require you to be on-site with clients.</p>
       </div>
       <div>
+        <Image src={mbeBadge} alt="NMSDC certified Minority Business Enterprise badge" class="two-col-media" widths={[640, 1280]} width={1280} sizes="(max-width: 800px) 92vw, 600px" />
         <span class="eyebrow">Who we are</span>
         <h2>Diversity is our foundation.</h2>
         <p>For us diversity isn't just a belief or concept, it is the core of our business. As a minority-owned company, we believe our organization succeeds when we embrace the full range of what it means to be human.</p>
@@ -93,7 +102,14 @@ const benefits = [
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
+  .two-col-media { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: var(--surface); border-radius: var(--radius-2xl); margin-bottom: var(--space-6); }
+  .values-split { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .values-split img { border-radius: 0; }
   @media (max-width: 800px) {
     .two-col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .values-split { grid-template-columns: 1fr; }
+    .values-split img { max-width: 360px; margin: 0 auto; }
   }
 </style>

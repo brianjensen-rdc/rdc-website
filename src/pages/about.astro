@@ -1,32 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import iconRed from '../media/about/icon-red.png';
+import iconDoor from '../media/about/icon-door.png';
+import iconCollaborative from '../media/about/icon-collaborative.png';
+import diverseTeam from '../media/about/diverse-team.png';
+import chris from '../media/team/chris-telfer.png';
+import jenny from '../media/team/jenny-telfer.png';
+import brian from '../media/team/brian-jensen.png';
+import amy from '../media/team/amy-metzler.png';
+import erin from '../media/team/erin-genest.jpg';
+import najwa from '../media/team/najwa-yosof.png';
+import nathan from '../media/team/nathan-smith.png';
+import joy from '../media/team/joy-baer.png';
+import justine from '../media/team/justine-brown.jpg';
 
 const brandPillars = [
   {
     word: 'Red',
+    icon: iconRed,
     copy: 'The color of passion and diversity. Our passion drives our energy with every client we meet.',
   },
   {
     word: 'Door',
+    icon: iconDoor,
     copy: 'A symbol of hospitality and community. Walking through our door means inviting you to possibilities beyond your imagination.',
   },
   {
     word: 'Collaborative',
+    icon: iconCollaborative,
     copy: 'Our reason for being. We work alongside you and your teams to bring your creative vision to life - think of us as your in-house marketing shop, for hire.',
   },
 ];
 
 const team = [
-  { name: 'Chris Telfer', title: 'Managing Partner, Creative Director' },
-  { name: 'Jenny Telfer', title: 'Managing Partner' },
-  { name: 'Brian Jensen', title: 'Head of People + Operations' },
-  { name: 'Amy Metzler', title: 'Sr. Marketing Account Manager' },
-  { name: 'Erin Genest', title: 'Marketing Account Manager' },
-  { name: 'Najwa Yosof', title: 'Assoc. Creative Director' },
-  { name: 'Nathan Smith', title: 'Sr. Lead, Motion Graphics' },
-  { name: 'Joy Baer', title: 'Sr. Lead, Visual Design' },
-  { name: 'Justine Brown', title: 'Sr. Lead, Marketing Content' },
+  { name: 'Chris Telfer', title: 'Managing Partner, Creative Director', photo: chris },
+  { name: 'Jenny Telfer', title: 'Managing Partner', photo: jenny },
+  { name: 'Brian Jensen', title: 'Head of People + Operations', photo: brian },
+  { name: 'Amy Metzler', title: 'Sr. Marketing Account Manager', photo: amy },
+  { name: 'Erin Genest', title: 'Marketing Account Manager', photo: erin },
+  { name: 'Najwa Yosof', title: 'Assoc. Creative Director', photo: najwa },
+  { name: 'Nathan Smith', title: 'Sr. Lead, Motion Graphics', photo: nathan },
+  { name: 'Joy Baer', title: 'Sr. Lead, Visual Design', photo: joy },
+  { name: 'Justine Brown', title: 'Sr. Lead, Marketing Content', photo: justine },
 ];
 ---
 <Layout title="About" description="Meet Red Door Collaborative - a minority-founded, fully remote creative agency built on collaboration and diversity of thought.">
@@ -45,6 +62,7 @@ const team = [
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {brandPillars.map((p) => (
           <div class="card">
+            <Image src={p.icon} alt="" class="card-icon" widths={[135, 270]} width={270} sizes="86px" />
             <h3>{p.word}</h3>
             <p set:html={p.copy} />
           </div>
@@ -54,11 +72,14 @@ const team = [
   </section>
 
   <section class="tight">
-    <div class="container">
-      <blockquote class="quote">
+    <div class="container media-split">
+      <Image src={diverseTeam} alt="Abstract illustration of overlapping shapes and colors representing a diverse team" widths={[640, 1280]} width={1280} sizes="(max-width: 900px) 92vw, 600px" />
+      <div>
+      <blockquote class="quote quote-left">
         We are a minority-founded and minority-owned company, and this diversity is the foundation of our creative and strategic approach. We believe the best ideas emerge from a team formed by diversity of background and thought.
       </blockquote>
       <p class="quote-attribution">Diversity isn't just something we embrace - it's the very idea that drives us to push boundaries and inspire innovation.</p>
+      </div>
     </div>
   </section>
 
@@ -69,6 +90,7 @@ const team = [
       <div class="grid grid-3 team-grid" style="margin-top: 2.5rem;">
         {team.map((member) => (
           <div class="card team-card">
+            <Image src={member.photo} alt={`Portrait of ${member.name}`} class="card-media is-square" widths={[340, 680]} width={680} sizes="(max-width: 900px) 92vw, 400px" />
             <h3>{member.name}</h3>
             <p>{member.title}</p>
           </div>
@@ -82,5 +104,11 @@ const team = [
 
 <style>
   .team-card p { color: var(--accent-text); font-size: 14px; font-weight: 600; margin: 0; }
+  .quote-left { text-align: left; margin: 0; }
+  @media (max-width: 900px) {
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+    .team-card h3 { font-size: 16px; }
+  }
+  .quote-left + .quote-attribution { text-align: left; margin-left: 0; }
   @media (max-width: 768px) { .team-card p { font-size: 13px; } }
 </style>
