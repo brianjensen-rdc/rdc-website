@@ -1,0 +1,36 @@
+name: One-time media curation
+
+# Runs once when this file is pushed to the media-curation-run branch.
+# Copies the live site's media out of asset-library/, repoints the case study
+# pages, removes asset-library/, and pushes the result to a new
+# media-curation branch for review as a pull request. The result does not
+# include this workflow or its script.
+on:
+  push:
+    branches: [media-curation-run]
+
+permissions:
+  contents: write
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Curate media
+        run: python3 .github/scripts/curate_media.py
+
+      - name: Remove this one-time workflow from the result
+        run: git rm -q .github/workflows/curate-media.yml .github/scripts/curate_media.py
+
+      - name: Commit and push to media-curation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b media-curation
+          git add -A
+          git commit -q -m "Curate live-site media into src/media, repoint case studies, remove asset-library"
+          git push origin media-curation
+          git show --stat --oneline HEAD | tail -5
