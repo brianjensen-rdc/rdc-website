@@ -4,83 +4,87 @@
    need to change - only the values underneath moved to real brand colors. */
 
 /* --- Suisse Int'l (licensed) ---
-   Font files live in src/fonts/ and are referenced with a relative path so
+   The font files are NOT stored in this public repo. They live in the
+   private repo brianjensen-rdc/rdc-brand-fonts and are copied into
+   src/fonts/ by the deploy workflow at build time (src/fonts/ is
+   gitignored). File names and weight numbers match the RDC design system.
+   Fonts are referenced with a relative path so
    Astro/Vite's asset pipeline hashes them and applies the correct GitHub
    Pages base path automatically - no manual BASE_URL handling needed here,
    unlike public/ assets referenced from .astro templates. */
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-100-normal.woff2") format("woff2");
-  font-weight: 100;
+  src: url("../fonts/SuisseIntl-Thin.woff2") format("woff2");
+  font-weight: 250;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-100-italic.woff2") format("woff2");
-  font-weight: 100;
+  src: url("../fonts/SuisseIntl-ThinIt.woff2") format("woff2");
+  font-weight: 250;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-300-normal.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-300-italic.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-LightIt.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-350-normal.woff2") format("woff2");
-  font-weight: 350;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-350-italic.woff2") format("woff2");
-  font-weight: 350;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-400-normal.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-400-italic.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-RegularIt.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-500-normal.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-Book.woff2") format("woff2");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/SuisseIntl-BookIt.woff2") format("woff2");
+  font-weight: 450;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("../fonts/SuisseIntl-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-600-normal.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-Semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Suisse Intl";
-  src: url("../fonts/suisse-intl-700-normal.woff2") format("woff2");
+  src: url("../fonts/SuisseIntl-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
