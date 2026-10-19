@@ -26,13 +26,16 @@ const caseStudies = [
 <Layout title="Home">
   <section class="hero">
     <div class="container hero-inner">
-      <span class="eyebrow hero-eyebrow">Creative &amp; Strategy Agency</span>
-      <h1 class="display">Where creativity &amp; strategy unite.</h1>
-      <p class="hero-sub">Marketing that speaks your brand's language and drives real engagement - from an embedded team that works the way yours does.</p>
-      <div class="cta-row">
-        <a href={`${BASE}contact/`} class="btn btn-primary">Hire us</a>
-        <a href={`${BASE}careers/`} class="btn btn-outline">Join us</a>
+      <div class="hero-copy">
+        <span class="eyebrow hero-eyebrow">Creative &amp; Strategy Agency</span>
+        <h1 class="display">Where creativity &amp; strategy unite.</h1>
+        <p class="hero-sub">Marketing that speaks your brand's language and drives real engagement - from an embedded team that works the way yours does.</p>
+        <div class="cta-row">
+          <a href={`${BASE}contact/`} class="btn btn-primary">Hire us</a>
+          <a href={`${BASE}careers/`} class="btn btn-outline">Join us</a>
+        </div>
       </div>
+      <img class="hero-mark" src={`${BASE}logo/rdc-secondary-icon-full-color.svg`} alt="" aria-hidden="true" width="443" height="400" />
     </div>
   </section>
 
@@ -99,7 +102,15 @@ const caseStudies = [
 
 <style>
   .hero { padding: var(--space-24) 0 var(--space-20); }
-  .hero-inner > * { max-width: 760px; }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-12);
+  }
+  .hero-copy { max-width: 760px; }
+  /* Secondary icon as the hero graphic (Web section): Coral, 120px tall or larger. */
+  .hero-mark { height: clamp(240px, 28vw, 400px); width: auto; display: block; }
   .hero-eyebrow { color: var(--text-muted); }
   .hero-sub { margin-bottom: var(--space-8); }
   .social-proof-label {
@@ -113,6 +124,10 @@ const caseStudies = [
   }
   .case-client { color: var(--accent-text); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; }
   .case-services { font-size: 15px; }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-mark { display: none; }
+  }
   @media (max-width: 768px) {
     .case-services { font-size: 14px; }
     .social-proof-label, .case-client { font-size: 11px; }

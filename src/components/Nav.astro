@@ -10,12 +10,12 @@ const navLinks = [
 ];
 const currentPath = Astro.url.pathname;
 ---
-<header class="site-nav">
+<header class="site-nav" data-site-nav>
   <div class="container nav-inner">
     <a href={BASE} class="brand-logo" aria-label="Red Door Collaborative home">
-      <img src={`${BASE}logo/rdc-logo-light.svg`} alt="Red Door Collaborative" width="170" height="46" />
+      <img src={`${BASE}logo/rdc-logo-horizontal-outline-white.svg`} alt="Red Door Collaborative" width="197" height="28" />
     </a>
-    <nav aria-label="Primary">
+    <nav aria-label="Primary" id="site-menu">
       <ul>
         {navLinks.map((link) => {
           const href = `${BASE}${link.path}`;
@@ -31,8 +31,25 @@ const currentPath = Astro.url.pathname;
       </ul>
     </nav>
     <a href={`${BASE}contact/`} class="btn btn-primary btn-sm nav-cta">Hire us</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<script>
+  // Mobile menu toggle (design system SiteHeader pattern).
+  const header = document.querySelector('[data-site-nav]');
+  const btn = header?.querySelector('.menu-btn');
+  const setOpen = (open) => {
+    header?.classList.toggle('is-open', open);
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  btn?.addEventListener('click', () => setOpen(!header?.classList.contains('is-open')));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  window.matchMedia('(min-width: 801px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+</script>
 
 <style>
   /* Site header: Squid bar per the design system's SiteHeader. Nav links are
@@ -57,7 +74,7 @@ const currentPath = Astro.url.pathname;
     align-items: center;
   }
   .brand-logo img {
-    height: 34px;
+    height: 28px;
     width: auto;
     display: block;
   }
@@ -78,7 +95,26 @@ const currentPath = Astro.url.pathname;
   }
   nav a:hover { color: var(--white); }
   nav a[aria-current="page"] { color: var(--white); border-bottom-color: var(--coral); }
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .menu-btn span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 1px; transition: transform 0.15s ease, opacity 0.15s ease; }
+  .is-open .menu-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .is-open .menu-btn span:nth-child(2) { opacity: 0; }
+  .is-open .menu-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
   @media (max-width: 800px) {
-    nav { display: none; }
+    .nav-inner { flex-wrap: wrap; }
+    .nav-cta { display: none; }
+    .menu-btn { display: flex; order: 2; }
+    nav { display: none; flex-basis: 100%; order: 3; }
+    .is-open nav { display: block; padding: var(--space-2) 0 var(--space-4); }
+    .is-open nav ul { flex-direction: column; gap: var(--space-4); }
+    nav a { font-size: 16px; }
   }
 </style>
