@@ -1,13 +1,12 @@
 ---
+import media1 from '../media/work/procraft.png';
+import media2 from '../media/case-studies/procraft/brand-guidelines-01.png';
+import media3 from '../media/case-studies/procraft/brand-guidelines-05.png';
+import media4 from '../media/case-studies/procraft/brand-guidelines-09.png';
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-// Served straight from this repo's asset-library/ archive (already
-// committed on main) via raw.githubusercontent.com, rather than
-// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
-// so this is a stopgap -- ideally this becomes a self-hosted copy in
-// public/case-studies/ (or a proper CDN in front of the repo) later.
-const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_procraft-courses-campaign.png';
+const heroImage = media1.src;
 
 const meta = [
   { label: 'Company', value: 'Procraft Media' },
@@ -22,9 +21,9 @@ const assets = [
 ];
 
 const gallery = [
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_01.png', alt: 'Procraft branding guidelines cover page', caption: 'Brand guidelines: cover' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_05%20%281%29.png', alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/ProCraft_BrandingGuidelines%201_Page_09%20%281%29.png', alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
+  { src: media2.src, alt: 'Procraft branding guidelines cover page', caption: 'Brand guidelines: cover' },
+  { src: media3.src, alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
+  { src: media4.src, alt: 'Procraft branding guidelines interior spread', caption: 'Brand guidelines: interior spread' },
 ];
 ---
 <Layout title="Procraft Digital Course" description="How Red Door Collaborative turned Procraft's technical training manual into a 40-hour digital certification program.">

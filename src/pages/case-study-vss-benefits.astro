@@ -1,13 +1,12 @@
 ---
+import media1 from '../media/work/vss-benefits.png';
+import media2 from '../media/case-studies/vss-benefits/twitter-banner.png';
+import media3 from '../media/case-studies/vss-benefits/social-ad-vslive.png';
+import media4 from '../media/case-studies/vss-benefits/benefits-flyer.png';
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-// Served straight from this repo's asset-library/ archive (already
-// committed on main) via raw.githubusercontent.com, rather than
-// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
-// so this is a stopgap -- ideally this becomes a self-hosted copy in
-// public/case-studies/ (or a proper CDN in front of the repo) later.
-const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_visual-studio-ide-campaign.png';
+const heroImage = media1.src;
 
 const meta = [
   { label: 'Company', value: 'Microsoft' },
@@ -24,9 +23,9 @@ const results = [
 ];
 
 const gallery = [
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/VSS%20Twitter%20Banner.png', alt: 'VSS Twitter banner social graphic', caption: 'Social media: VSS Twitter banner' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Q4_VSS%20Social_Ad2_VSLive.png', alt: 'VSLive conference social ad for VSS', caption: 'Conference materials: VSLive social ad' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/MICROSOCF%20VSS%20%28A4%20SIZE%29%20FA%20%28DIGITAL%29_Page_1.png', alt: 'VSS benefits one-pager print collateral', caption: 'Print collateral: VSS benefits one-pager' },
+  { src: media2.src, alt: 'VSS Twitter banner social graphic', caption: 'Social media: VSS Twitter banner' },
+  { src: media3.src, alt: 'VSLive conference social ad for VSS', caption: 'Conference materials: VSLive social ad' },
+  { src: media4.src, alt: 'VSS benefits one-pager print collateral', caption: 'Print collateral: VSS benefits one-pager' },
 ];
 ---
 <Layout title="VSS Benefits" description="How Red Door Collaborative helped Microsoft close the communication gap on Visual Studio Subscription benefits.">
