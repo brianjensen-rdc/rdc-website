@@ -337,6 +337,48 @@ section.tight { padding: var(--space-12) 0; }
   letter-spacing: 0.02em;
 }
 
+/* --- Media in cards and layouts (images from src/media, optimized by Astro) --- */
+/* Image that bleeds to the card edges at the top of a card. */
+.card-media {
+  display: block;
+  width: calc(100% + 2 * var(--space-8));
+  max-width: none;
+  height: auto;
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) var(--space-6);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--gray-100);
+}
+.card-media.is-wide { aspect-ratio: 16 / 9; }
+.card-media.is-square { aspect-ratio: 1 / 1; }
+.card { overflow: hidden; }
+/* Brand illustration icon above a card title. */
+.card-icon { display: block; height: 64px; width: auto; margin-bottom: var(--space-4); }
+/* Image beside text. */
+.media-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+.media-split.is-reversed > :first-child { order: 2; }
+.media-split img { width: 100%; height: auto; display: block; border-radius: var(--radius-2xl); }
+@media (max-width: 900px) {
+  .media-split { grid-template-columns: 1fr; gap: var(--space-8); }
+  .media-split.is-reversed > :first-child { order: 0; }
+}
+/* Client logo images (gray logos on white tiles, as on the live site). */
+.logo-wall {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-items: center;
+}
+.logo-wall img { width: 100%; height: auto; display: block; }
+@media (max-width: 900px) { .logo-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .logo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* --- Featured quote (design system Quote, featured) --- */
 .quote {
   margin: 0 auto;
@@ -427,6 +469,8 @@ form.contact-form textarea:focus {
   .btn { font-size: 15px; padding: 12px 30px; }
   .btn-sm { font-size: 13px; padding: 9px 22px; }
   .card { padding: var(--space-6); }
+  .card-media { width: calc(100% + 2 * var(--space-6)); margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-5); }
+  .card-icon { height: 52px; }
   .quote { font-size: 20px; line-height: 1.35; }
   .quote-attribution { font-size: 15px; }
   .logo-strip span { font-size: 18px; }
