@@ -21,6 +21,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout brand fonts (private repo)
+        uses: actions/checkout@v4
+        with:
+          repository: brianjensen-rdc/rdc-brand-fonts
+          token: ${{ secrets.FONTS_REPO_TOKEN }}
+          path: _brand-fonts
+
+      - name: Install brand fonts
+        run: |
+          rm -rf src/fonts
+          mkdir -p src/fonts
+          cp _brand-fonts/*.woff2 src/fonts/
+          ls -l src/fonts
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

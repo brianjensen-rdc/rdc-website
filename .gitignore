@@ -3,3 +3,7 @@ dist/
 .astro/
 .DS_Store
 package-lock.json
+
+# Licensed brand fonts: pulled from the private rdc-brand-fonts repo at build time
+src/fonts/
+_brand-fonts/
