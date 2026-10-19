@@ -1,13 +1,17 @@
 ---
+import media1 from '../media/work/azure-essentials.png';
+import media2 from '../media/case-studies/azure-essentials/lockup-dark.png';
+import media3 from '../media/case-studies/azure-essentials/lockup-light.png';
+import media4 from '../media/case-studies/azure-essentials/thumbnail.png';
+import media5 from '../media/case-studies/azure-essentials/video-opening-frame.png';
+import media6 from '../media/case-studies/azure-essentials/event-style-guide.png';
+import media7 from '../media/case-studies/azure-essentials/email-banner-1.png';
+import media8 from '../media/case-studies/azure-essentials/email-banner-2.png';
+import media9 from '../media/work/azure-essentials-show.gif';
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-// Served straight from this repo's asset-library/ archive (already
-// committed on main) via raw.githubusercontent.com, rather than
-// Squarespace's CDN. asset-library/ isn't wired into the Astro build,
-// so this is a stopgap -- ideally this becomes a self-hosted copy in
-// public/case-studies/ (or a proper CDN in front of the repo) later.
-const heroImage = 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/thumbnails_azure-essentials-campaign.png';
+const heroImage = media1.src;
 
 const meta = [
   { label: 'Company', value: 'Microsoft' },
@@ -20,20 +24,20 @@ const meta = [
 // "Azure Socials" and "Azure Essentials Show" projects, which are
 // different Work-page items, not this campaign).
 const gallery = [
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials-Dark_640x320.png', alt: 'Azure Essentials dark brand lockup', caption: 'Visual identity: dark brand lockup' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials-Light_640x320.png', alt: 'Azure Essentials light brand lockup', caption: 'Visual identity: light brand lockup' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azure%20Essentials_thumbnail.png', alt: 'Azure Essentials campaign thumbnail artwork', caption: 'Visual identity: campaign thumbnail' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentialsVideo-OpeningFrame.png', alt: 'Opening frame from the Azure Essentials intro video', caption: 'Video production: intro video opening frame' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Event%20style%20guide_AzureEssentialsTechAccelerator.png', alt: 'Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: Tech Accelerator style guide' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials_email%20banner%201.png', alt: 'Azure Essentials email banner, version one', caption: 'Email marketing: banner v1' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azura%20Essentials_email%20banner%202.png', alt: 'Azure Essentials email banner, version two', caption: 'Email marketing: banner v2' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentials_gif_v1.gif', alt: 'Animated Azure Essentials identity showcase', caption: 'Visual identity: animated showcase' },
+  { src: media2.src, alt: 'Azure Essentials dark brand lockup', caption: 'Visual identity: dark brand lockup' },
+  { src: media3.src, alt: 'Azure Essentials light brand lockup', caption: 'Visual identity: light brand lockup' },
+  { src: media4.src, alt: 'Azure Essentials campaign thumbnail artwork', caption: 'Visual identity: campaign thumbnail' },
+  { src: media5.src, alt: 'Opening frame from the Azure Essentials intro video', caption: 'Video production: intro video opening frame' },
+  { src: media6.src, alt: 'Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: Tech Accelerator style guide' },
+  { src: media7.src, alt: 'Azure Essentials email banner, version one', caption: 'Email marketing: banner v1' },
+  { src: media8.src, alt: 'Azure Essentials email banner, version two', caption: 'Email marketing: banner v2' },
+  { src: media9.src, alt: 'Animated Azure Essentials identity showcase', caption: 'Visual identity: animated showcase' },
 ];
 
 // Campaign videos, embedded directly rather than linked out.
 const videos = [
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/AzureEssentials_Intro-2024_v03-00.mp4', caption: 'Intro video: introducing Azure Essentials' },
-  { src: 'https://raw.githubusercontent.com/brianjensen-rdc/rdc-website/main/asset-library/Azure%20Essentials%20%E2%80%93%20Customer%20Presentation_2024_final-portfolioedit.mp4', caption: 'Customer-facing presentation video' },
+  { src: `${import.meta.env.BASE_URL}media/video/azure-essentials-intro.mp4`, caption: 'Intro video: introducing Azure Essentials' },
+  { src: `${import.meta.env.BASE_URL}media/video/azure-essentials-customer-presentation.mp4`, caption: 'Customer-facing presentation video' },
 ];
 ---
 <Layout title="Azure Essentials" description="How Red Door Collaborative built the Azure Essentials brand identity and marketing suite for Microsoft.">
