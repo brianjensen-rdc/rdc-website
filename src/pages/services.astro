@@ -1,17 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import iconCollaborate from '../media/services/icon-collaborate.png';
+import iconCreate from '../media/services/icon-create.png';
+import iconScale from '../media/services/icon-scale.png';
+import embedded from '../media/services/embedded-consulting.png';
+import projectBased from '../media/services/project-based-consulting.png';
+import managed from '../media/services/managed-services.png';
+import editorial from '../media/services/editorial.png';
+import visualDesign from '../media/services/visual-design.png';
+import videoMotion from '../media/services/video-motion.png';
 
 const pillars = [
-  { title: 'Collaboration is in our DNA', copy: "From idea to delivery, we partner with you to offer fully customized marketing and consulting solutions that are extensions of your brand and vision." },
-  { title: 'We speak creative', copy: 'We craft innovative solutions in content, branding, video production, and digital experiences that resonate with your audience and drive measurable results.' },
-  { title: 'We help you scale', copy: 'You have a project, we provide the resources to help you get there - the right person, or a full team of talented consultants, to meet your marketing needs.' },
+  { title: 'Collaboration is in our DNA', icon: iconCollaborate, copy: "From idea to delivery, we partner with you to offer fully customized marketing and consulting solutions that are extensions of your brand and vision." },
+  { title: 'We speak creative', icon: iconCreate, copy: 'We craft innovative solutions in content, branding, video production, and digital experiences that resonate with your audience and drive measurable results.' },
+  { title: 'We help you scale', icon: iconScale, copy: 'You have a project, we provide the resources to help you get there - the right person, or a full team of talented consultants, to meet your marketing needs.' },
 ];
 
 const consulting = [
-  { title: 'Embedded Consulting', copy: "Scale your organization's output by adding industry experts to your team. We source, hire, train, and onboard additional staff to help you meet your objectives." },
-  { title: 'Project-based Consulting', copy: 'Our team of consultants plan and execute projects that tackle your biggest business challenges, with milestones and schedules that keep outcomes on time.' },
-  { title: 'Managed Services', copy: 'End-to-end solutions in which we staff teams of specialists to operate an on-going, repeatable business function or process.' },
+  { title: 'Embedded Consulting', image: embedded, alt: 'Illustration of a consultant working inside a client team dashboard', copy: "Scale your organization's output by adding industry experts to your team. We source, hire, train, and onboard additional staff to help you meet your objectives." },
+  { title: 'Project-based Consulting', image: projectBased, alt: 'Illustration of a project schedule with milestones', copy: 'Our team of consultants plan and execute projects that tackle your biggest business challenges, with milestones and schedules that keep outcomes on time.' },
+  { title: 'Managed Services', image: managed, alt: 'Illustration of an operations dashboard with charts', copy: 'End-to-end solutions in which we staff teams of specialists to operate an on-going, repeatable business function or process.' },
 ];
 
 const marketing = [
@@ -23,6 +33,13 @@ const marketing = [
   { title: 'Website Design', items: ['UX/UI design and wireframing', 'Site asset design & production', 'Website audits and optimization'] },
   { title: 'Video Marketing and Production', items: ['Brand storytelling and commercial videos', 'Animated explainer videos and motion graphics', 'Social media video content', 'Product demos and launch videos', 'Customer testimonials and case study videos', 'Live-action video production'] },
   { title: 'Event Marketing and Experiential Design', items: ['Event branding and creative design', 'Trade show and conference booths', 'Experiential marketing campaigns', 'Digital and hybrid event support', 'Branded promotional materials', 'Post-event content and engagement strategy'] },
+];
+
+// The live site groups the marketing services under three illustrations.
+const marketingGroups = [
+  { image: editorial, alt: 'Illustration of editorial content layouts', items: marketing.slice(0, 3) },
+  { image: visualDesign, alt: 'Illustration of a design tool canvas', items: marketing.slice(3, 6) },
+  { image: videoMotion, alt: 'Illustration of video and motion production', items: marketing.slice(6) },
 ];
 ---
 <Layout title="Services" description="Consulting and marketing services from Red Door Collaborative - from embedded consultants to full-service brand, content, design, video, and event marketing.">
@@ -38,6 +55,7 @@ const marketing = [
       <div class="grid grid-3">
         {pillars.map((p) => (
           <div class="card">
+            <Image src={p.icon} alt="" class="card-icon" widths={[135, 270]} width={270} sizes="86px" />
             <h3>{p.title}</h3>
             <p>{p.copy}</p>
           </div>
@@ -53,6 +71,7 @@ const marketing = [
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {consulting.map((c) => (
           <div class="card">
+            <Image src={c.image} alt={c.alt} class="card-media is-wide" widths={[400, 800]} width={800} sizes="(max-width: 900px) 92vw, 400px" />
             <h3>{c.title}</h3>
             <p>{c.copy}</p>
           </div>
@@ -65,18 +84,28 @@ const marketing = [
     <div class="container">
       <span class="eyebrow">Marketing</span>
       <h2>Everything a brand's story needs, under one roof.</h2>
-      <div class="grid grid-2" style="margin-top: 2.5rem;">
-        {marketing.map((m) => (
-          <div class="card">
-            <h3>{m.title}</h3>
-            <div class="tag-list">
-              {m.items.map((item) => <span class="tag">{item}</span>)}
-            </div>
+      {marketingGroups.map((g, i) => (
+        <div class={`media-split service-group${i % 2 ? ' is-reversed' : ''}`}>
+          <Image src={g.image} alt={g.alt} widths={[640, 1280]} width={1280} sizes="(max-width: 900px) 92vw, 600px" />
+          <div class="service-list">
+            {g.items.map((m) => (
+              <div class="card">
+                <h3>{m.title}</h3>
+                <div class="tag-list">
+                  {m.items.map((item) => <span class="tag">{item}</span>)}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </section>
 
   <CTASection heading="Let's collaborate." />
 </Layout>
+
+<style>
+  .service-group { margin-top: var(--space-12); align-items: start; }
+  .service-list { display: grid; gap: var(--space-4); }
+</style>

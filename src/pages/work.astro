@@ -1,24 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import microsoft from '../media/clients/microsoft.png';
+import salesforce from '../media/clients/salesforce.png';
+import databricks from '../media/clients/databricks.png';
+import procraft from '../media/clients/procraft.png';
+import meta from '../media/clients/meta.png';
+import thumbAzure from '../media/work/azure-essentials.png';
+import thumbVss from '../media/work/vss-benefits.png';
+import thumbProcraft from '../media/work/procraft.png';
+import thumbFinops from '../media/work/finops-ebook.png';
+import thumbAzureSocial from '../media/work/azure-social.png';
+import gifVssVideo from '../media/work/vss-video.gif';
+import thumbDatabricks from '../media/work/databricks-ebook.png';
+import gifRdcSocial from '../media/work/rdc-social.gif';
+import gifAzureShow from '../media/work/azure-essentials-show.gif';
 
 const BASE = import.meta.env.BASE_URL;
 
-const clients = ['Microsoft', 'Salesforce', 'Databricks', 'Procraft', 'Meta'];
+const clients = [
+  { name: 'Microsoft', logo: microsoft },
+  { name: 'Salesforce', logo: salesforce },
+  { name: 'Databricks', logo: databricks },
+  { name: 'Procraft', logo: procraft },
+  { name: 'Meta', logo: meta },
+];
 
 const caseStudies = [
-  { name: 'Azure Essentials', client: 'Microsoft', services: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-azure-essentials/' },
-  { name: 'Visual Studio Subscriptions Benefits', client: 'Microsoft / Visual Studio Subscriptions', services: 'Digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-vss-benefits/' },
-  { name: 'Procraft Digital Course', client: 'Procraft', services: 'Brand strategy, content marketing, video production, graphic design', href: 'case-study-procraft/' },
+  { name: 'Azure Essentials', client: 'Microsoft', services: 'Brand strategy, digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-azure-essentials/', image: thumbAzure, alt: 'Isometric cloud illustration from the Azure Essentials campaign' },
+  { name: 'Visual Studio Subscriptions Benefits', client: 'Microsoft / Visual Studio Subscriptions', services: 'Digital marketing, content marketing, social media marketing, video marketing, graphic design, event marketing', href: 'case-study-vss-benefits/', image: thumbVss, alt: 'Glowing laptop illustration from the Visual Studio Subscriptions campaign' },
+  { name: 'Procraft Digital Course', client: 'Procraft', services: 'Brand strategy, content marketing, video production, graphic design', href: 'case-study-procraft/', image: thumbProcraft, alt: 'Sound board illustration from the Procraft digital course' },
 ];
 
 const projects = [
-  { name: 'Managing ESG goals through FinOps', client: 'Microsoft', services: 'Content marketing, graphic design' },
-  { name: 'Azure Social Media', client: 'Microsoft', services: 'Social media marketing, graphic design, video marketing' },
-  { name: 'Visual Studio Subscriptions Benefits Video', client: 'Microsoft', services: 'Graphic design, video marketing, content marketing, social media marketing' },
-  { name: 'A Guide to Data Warehousing in the Lakehouse', client: 'Databricks', services: 'Content marketing, graphic design' },
-  { name: 'Red Door Collaborative Social Media', client: 'Red Door Collaborative', services: 'Social media marketing, graphic design, video marketing' },
-  { name: 'The Azure Essentials Show', client: 'Microsoft', services: 'Video marketing and production, graphic design, content marketing' },
+  { name: 'Managing ESG goals through FinOps', client: 'Microsoft', services: 'Content marketing, graphic design', image: thumbFinops, alt: 'Cover art from the FinOps and sustainability eBook' },
+  { name: 'Azure Social Media', client: 'Microsoft', services: 'Social media marketing, graphic design, video marketing', image: thumbAzureSocial, alt: 'Isometric data illustration from Azure social media posts' },
+  { name: 'Visual Studio Subscriptions Benefits Video', client: 'Microsoft', services: 'Graphic design, video marketing, content marketing, social media marketing', gif: gifVssVideo, alt: 'Animated scene from the Visual Studio Subscriptions benefits video' },
+  { name: 'A Guide to Data Warehousing in the Lakehouse', client: 'Databricks', services: 'Content marketing, graphic design', image: thumbDatabricks, alt: 'Cover of the Databricks data warehousing eBook' },
+  { name: 'Red Door Collaborative Social Media', client: 'Red Door Collaborative', services: 'Social media marketing, graphic design, video marketing', gif: gifRdcSocial, alt: 'Animated illustration from Red Door Collaborative social posts' },
+  { name: 'The Azure Essentials Show', client: 'Microsoft', services: 'Video marketing and production, graphic design, content marketing', gif: gifAzureShow, alt: 'Animated preview of The Azure Essentials Show' },
 ];
 ---
 <Layout title="Work" description="Case studies and projects from Red Door Collaborative, built with Microsoft, Salesforce, Databricks, Procraft, and more.">
@@ -31,8 +52,8 @@ const projects = [
 
   <section class="tight">
     <div class="container">
-      <div class="logo-strip">
-        {clients.map((c) => <span>{c}</span>)}
+      <div class="logo-wall">
+        {clients.map((c) => <Image src={c.logo} alt={`${c.name} logo`} widths={[268, 536]} width={536} sizes="(max-width: 560px) 45vw, (max-width: 900px) 30vw, 240px" />)}
       </div>
     </div>
   </section>
@@ -44,6 +65,7 @@ const projects = [
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {caseStudies.map((cs) => (
           <a class="card case-card" href={`${BASE}${cs.href}`}>
+            <Image src={cs.image} alt={cs.alt} class="card-media" widths={[400, 800]} width={800} sizes="(max-width: 900px) 92vw, 400px" />
             <h3>{cs.name}</h3>
             <p class="case-client">{cs.client}</p>
             <p>{cs.services}</p>
@@ -61,6 +83,9 @@ const projects = [
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {projects.map((p) => (
           <div class="card">
+            {p.gif
+              ? <img src={p.gif.src} alt={p.alt} class="card-media" width={p.gif.width} height={p.gif.height} loading="lazy" decoding="async" />
+              : <Image src={p.image} alt={p.alt} class="card-media" widths={[400, 800]} width={800} sizes="(max-width: 900px) 92vw, 400px" />}
             <h3>{p.name}</h3>
             <p class="case-client">{p.client}</p>
             <p>{p.services}</p>

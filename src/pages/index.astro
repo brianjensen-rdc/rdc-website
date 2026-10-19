@@ -1,25 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import { Image } from 'astro:assets';
+import infinityChart from '../media/home/infinity-chart.png';
+import microsoft from '../media/clients/microsoft.png';
+import salesforce from '../media/clients/salesforce.png';
+import databricks from '../media/clients/databricks.png';
+import procraft from '../media/clients/procraft.png';
+import meta from '../media/clients/meta.png';
+import thumbAzure from '../media/work/azure-essentials.png';
+import thumbVss from '../media/work/vss-benefits.png';
+import thumbProcraft from '../media/work/procraft.png';
 
 const BASE = import.meta.env.BASE_URL;
-const clients = ['Microsoft', 'Salesforce', 'Databricks', 'Procraft', 'Meta'];
+const clients = [
+  { name: 'Microsoft', logo: microsoft },
+  { name: 'Salesforce', logo: salesforce },
+  { name: 'Databricks', logo: databricks },
+  { name: 'Procraft', logo: procraft },
+  { name: 'Meta', logo: meta },
+];
 
 const caseStudies = [
   {
     name: 'Azure Essentials',
     client: 'Microsoft',
     services: 'Brand strategy, digital, content, social, video, design, events',
+    href: 'case-study-azure-essentials/',
+    image: thumbAzure,
+    alt: 'Isometric cloud illustration from the Azure Essentials campaign',
   },
   {
     name: 'Visual Studio Subscriptions Benefits',
     client: 'Microsoft',
     services: 'Digital, content, social, video, graphic design, events',
+    href: 'case-study-vss-benefits/',
+    image: thumbVss,
+    alt: 'Glowing laptop illustration from the Visual Studio Subscriptions campaign',
   },
   {
     name: 'Procraft Digital Course',
     client: 'Procraft',
     services: 'Brand strategy, content, video production, graphic design',
+    href: 'case-study-procraft/',
+    image: thumbProcraft,
+    alt: 'Sound board illustration from the Procraft digital course',
   },
 ];
 ---
@@ -42,8 +67,8 @@ const caseStudies = [
   <section class="tight">
     <div class="container">
       <p class="social-proof-label">We've collaborated with some of the biggest names in tech.</p>
-      <div class="logo-strip">
-        {clients.map((c) => <span>{c}</span>)}
+      <div class="logo-wall">
+        {clients.map((c) => <Image src={c.logo} alt={`${c.name} logo`} widths={[268, 536]} width={536} sizes="(max-width: 560px) 45vw, (max-width: 900px) 30vw, 240px" />)}
       </div>
     </div>
   </section>
@@ -52,6 +77,7 @@ const caseStudies = [
     <div class="container">
       <span class="eyebrow">What we do</span>
       <h2>Let's see what we can do together.</h2>
+      <Image src={infinityChart} alt="Consulting services and marketing services shown as two connected loops" class="infinity-chart" widths={[640, 960, 1280]} width={1280} sizes="(max-width: 1000px) 92vw, 960px" />
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         <div class="card">
           <h3>Consulting</h3>
@@ -75,11 +101,12 @@ const caseStudies = [
       <h2>Marketing brilliance that speaks for itself.</h2>
       <div class="grid grid-3" style="margin-top: 2.5rem;">
         {caseStudies.map((cs) => (
-          <div class="card">
+          <a class="card case-card" href={`${BASE}${cs.href}`}>
+            <Image src={cs.image} alt={cs.alt} class="card-media" widths={[400, 800]} width={800} sizes="(max-width: 900px) 92vw, 400px" />
             <h3>{cs.name}</h3>
             <p class="case-client">{cs.client}</p>
             <p class="case-services">{cs.services}</p>
-          </div>
+          </a>
         ))}
       </div>
       <div style="margin-top: 2.5rem;">
@@ -124,6 +151,9 @@ const caseStudies = [
   }
   .case-client { color: var(--accent-text); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; }
   .case-services { font-size: 15px; }
+  .infinity-chart { display: block; width: 100%; max-width: 960px; height: auto; margin: var(--space-8) auto 0; border-radius: var(--radius-2xl); }
+  .case-card { display: block; transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+  .case-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-mark { display: none; }
