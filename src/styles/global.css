@@ -1,7 +1,10 @@
-/* Red Door Collaborative - brand tokens
-   Sourced from Brand Guidelines v1.0. Legacy variable names (--color-bg,
-   --color-red, etc.) are kept as aliases so existing page markup doesn't
-   need to change - only the values underneath moved to real brand colors. */
+/* Red Door Collaborative - site styles
+   Tokens follow the RDC design system (the org default design system in
+   Claude), which governs this site. Token names and values match the
+   system's tokens.css; website-specific rules follow its Web section
+   (light-first, display hero style, nav link exception).
+   Legacy variable names (--color-bg, --color-red, etc.) remain as aliases
+   onto the semantic tokens so existing markup keeps working. */
 
 /* --- Suisse Int'l (licensed) ---
    The font files are NOT stored in this public repo. They live in the
@@ -109,129 +112,208 @@
 }
 
 :root {
-  /* --- Brand palette (verbatim from guide) --- */
-  --color-squid: #0D1724;
-  --color-wine: #7F0046;
-  --color-coral: #FF4F58;
-  --color-mist: #ABDCE0;
-  --color-white: #FFFFFF;
-  --color-gray: #F3F3F3;
+  /* --- Brand palette (design system) --- */
+  --coral: #FF4F58;
+  --wine: #7F0046;
+  --squid: #0D1724;
+  --mist: #ABDCE0;
+  --white: #FFFFFF;
+  --plum: #4F1056;        /* gradient top stop only */
+  --rdc-gray: #F3F3F3;
 
-  /* Derived surface tones (not literal brand swatches, just tints of Squid
-     for layered dark surfaces - cards, nav, footer) */
-  --color-squid-raised: #16212F;
-  --color-squid-raised-2: #1E2C3D;
-  --color-border: #263344;
+  /* --- Neutrals --- */
+  --gray-50: #FAFAFA;
+  --gray-100: #F3F3F3;
+  --gray-200: #E8E8E8;
+  --gray-300: #D0D0D0;
+  --gray-500: #696969;
+  --gray-700: #444444;
+  --gray-900: #1A1A1A;
 
-  /* --- Legacy aliases used throughout existing components/pages --- */
-  --color-bg: var(--color-squid);
-  --color-bg-raised: var(--color-squid-raised);
-  --color-bg-raised-2: var(--color-squid-raised-2);
-  --color-text: var(--color-gray);
-  --color-text-muted: rgba(243, 243, 243, 0.62);
-  --color-red: var(--color-wine);
-  --color-red-bright: var(--color-coral);
-  --color-white: #FFFFFF;
+  /* --- Semantic tokens (Light theme, the site default) --- */
+  --page-bg: var(--rdc-gray);
+  --surface: #FFFFFF;
+  --surface-dark: #18253A;     /* dark panels on a light page */
+  --heading: var(--squid);
+  --text: var(--gray-900);
+  --text-body: var(--gray-700);
+  --text-muted: var(--gray-500);
+  --accent-text: #C13040;      /* small coral-red text on light grounds */
+  --link: var(--coral);        /* always underlined (nav excepted, see Web) */
+  --border: var(--gray-200);
+  --border-strong: var(--gray-300);
 
-  /* Brand gradient (Wine -> Coral), available for hero/CTA treatments */
-  --gradient-brand: linear-gradient(160deg, var(--color-wine), var(--color-coral));
+  /* --- On-dark text (site header, footer, dark panels) --- */
+  --on-dark: var(--white);
+  --on-dark-body: rgba(255, 255, 255, 0.75);
+  --on-dark-strong: rgba(255, 255, 255, 0.85);
+  --on-dark-border: rgba(255, 255, 255, 0.1);
 
-  /* Typeface: brand guide specifies Suisse, and RDC has a proper license -
-     self-hosted above via @font-face. The metric-matched fallback sits
-     between "Suisse Intl" and generic sans-serif so the pre-load state
-     already occupies the same layout space the real font will use. */
-  --font-heading: "Suisse Intl", "Suisse Intl Fallback", Arial, sans-serif;
-  --font-body: "Suisse Intl", "Suisse Intl Fallback", Arial, sans-serif;
+  /* --- Gradient: Plum to Coral, top to bottom --- */
+  --gradient-brand: linear-gradient(180deg, #4F1056 0%, #FF4F58 100%);
 
-  --max-width: 1180px;
-  --radius: 14px;
+  /* --- Shadows (Squid-tinted) --- */
+  --shadow-sm: 0 1px 3px rgba(13, 23, 36, 0.08);
+  --shadow-md: 0 4px 12px rgba(13, 23, 36, 0.10);
+  --shadow-lg: 0 8px 24px rgba(13, 23, 36, 0.12);
+
+  /* --- Spacing: 8pt grid in 4px steps --- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+
+  /* --- Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;    /* cards */
+  --radius-xl: 18px;    /* hero headers, CTA banner */
+  --radius-2xl: 24px;   /* feature panels, media frames */
+  --radius-pill: 999px; /* buttons, badges */
+
+  /* --- Layout --- */
+  --page-max: 1280px;
+  --content-max: 860px;
+
+  /* --- Type ---
+     The metric-matched fallback sits between Suisse Intl and generic sans so
+     the pre-load state occupies the same space the real font will use. */
+  --font-sans: "Suisse Intl", "Suisse Intl Fallback", Arial, sans-serif;
+
+  /* --- Legacy aliases (kept so existing markup keeps working) --- */
+  --color-squid: var(--squid);
+  --color-wine: var(--wine);
+  --color-coral: var(--coral);
+  --color-mist: var(--mist);
+  --color-white: var(--white);
+  --color-gray: var(--rdc-gray);
+  --color-bg: var(--page-bg);
+  --color-bg-raised: var(--surface);
+  --color-bg-raised-2: var(--gray-100);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-red: var(--wine);
+  --color-red-bright: var(--coral);
+  --color-border: var(--border);
+  --font-heading: var(--font-sans);
+  --font-body: var(--font-sans);
+  --max-width: var(--page-max);
+  --radius: var(--radius-lg);
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--font-sans);
   font-weight: 400;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
+/* --- Headings: web type scale (design system Web section) above 768px;
+   the system's base scale applies on phones (see the end of this file). --- */
 h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.15;
+  font-family: var(--font-sans);
   margin: 0 0 0.5em;
-  color: var(--color-white);
+  color: var(--heading);
+}
+h1 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+h2 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; line-height: 1.12; letter-spacing: -0.025em; }
+h3 { font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+h4 { font-size: 18px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+@media (max-width: 480px) { h1 { font-size: 30px; } }
+
+/* Website hero headline only (design system Web section): one per page. */
+.display {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
 }
 
-h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
-h3 { font-size: 1.3rem; }
+p { margin: 0 0 1em; color: var(--text-body); }
 
-p { margin: 0 0 1em; color: var(--color-text-muted); }
-
+/* Links: Coral and always underlined. Buttons, cards, and navigation carry
+   their own classes and are excluded (nav exception per the Web section). */
 a { color: inherit; text-decoration: none; }
+main a:not([class]) {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+main a:not([class]):hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
 .container {
-  max-width: var(--max-width);
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--space-8);
 }
+@media (max-width: 768px) { .container { padding: 0 var(--space-4); } }
 
-section { padding: 5rem 0; }
-section.tight { padding: 3rem 0; }
+section { padding: var(--space-20) 0; }
+section.tight { padding: var(--space-12) 0; }
+
+.hero-sub { font-size: 20px; line-height: 1.55; color: var(--text-body); max-width: 600px; }
 
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.78rem;
-  color: var(--color-red-bright);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--accent-text);
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
   display: inline-block;
 }
 
+/* --- Buttons: always pills; Coral is the primary CTA --- */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
-  border-radius: 999px;
+  gap: var(--space-2);
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  border: 0;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.btn:active { transform: none; box-shadow: none; }
+.btn-sm { font-size: 14px; padding: 10px 22px; }
 
-.btn-primary {
-  background: var(--color-red-bright);
-  color: var(--color-squid);
-}
-.btn-primary:hover { background: var(--color-mist); transform: translateY(-1px); }
+.btn-primary { background: var(--coral); color: var(--squid); }
+/* Secondary on light grounds */
+.btn-outline { background: transparent; color: var(--squid); box-shadow: inset 0 0 0 1.5px var(--squid); }
+.btn-outline:hover { box-shadow: inset 0 0 0 1.5px var(--squid), var(--shadow-sm); }
+/* Secondary on dark grounds */
+.btn-outline-coral { background: transparent; color: var(--coral); box-shadow: inset 0 0 0 1.5px var(--coral); }
+.btn-outline-coral:hover { box-shadow: inset 0 0 0 1.5px var(--coral), var(--shadow-sm); }
 
-.btn-outline {
-  background: transparent;
-  border-color: var(--color-border);
-  color: var(--color-text);
-}
-.btn-outline:hover { border-color: var(--color-red-bright); color: var(--color-red-bright); }
+.cta-row { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 
-.cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-
+/* --- Cards --- */
 .card {
-  background: var(--color-bg-raised);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  color: var(--text-body);
 }
 
 .grid {
   display: grid;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
@@ -244,69 +326,111 @@ section.tight { padding: 3rem 0; }
 .logo-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: var(--space-10);
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
 }
 .logo-strip span {
-  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-text-muted);
+  font-size: 22px;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 
+/* --- Featured quote (design system Quote, featured) --- */
 .quote {
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin: 0 auto;
+  max-width: 760px;
+  text-align: center;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.3;
   font-weight: 600;
-  color: var(--color-white);
-  border-left: 3px solid var(--color-red);
-  padding-left: 1.5rem;
+  letter-spacing: -0.015em;
+  color: var(--heading);
+}
+.quote::before {
+  content: "\201C";
+  display: block;
+  font-size: 72px;
+  line-height: 0.6;
+  height: 36px;
+  color: var(--coral);
+  font-weight: 700;
 }
 .quote-attribution {
-  margin-top: 1rem;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
+  margin: var(--space-4) auto 0;
+  max-width: 760px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 16px;
 }
 
-table.benefits td { padding: 0.6rem 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
-table.benefits td:first-child { color: var(--color-white); font-weight: 600; width: 30%; white-space: nowrap; }
+table.benefits { border-collapse: collapse; width: 100%; }
+table.benefits td { padding: var(--space-3) 0; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text-body); }
+table.benefits td:first-child { color: var(--heading); font-weight: 600; width: 30%; white-space: nowrap; padding-right: var(--space-4); }
 
-.tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
 .tag {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
+  font-size: 14px;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 2px 12px;
 }
 
+/* --- Forms --- */
 form.contact-form {
   display: grid;
-  gap: 1.1rem;
+  gap: var(--space-4);
   max-width: 560px;
 }
 form.contact-form label {
   display: block;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  margin-bottom: 0.4rem;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
 }
 form.contact-form input,
 form.contact-form textarea {
   width: 100%;
-  background: var(--color-bg-raised);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 0.75rem 0.9rem;
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 9px 14px;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 form.contact-form input:focus,
 form.contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-red-bright);
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(255, 79, 88, 0.15);
 }
+
+/* --- Small screens: the design system's base scale ---
+   The web scale above is for tablet and desktop. On phones the site uses the
+   system's original (document) scale, which reads better at arm's length. */
+@media (max-width: 768px) {
+  body { font-size: 15px; line-height: 1.7; }
+  h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; }
+  h2 { font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 16px; }
+  .display { font-size: 36px; }
+  .hero-sub { font-size: 16px; line-height: 1.7; max-width: 560px; }
+  .eyebrow { font-size: 10px; }
+  .btn { font-size: 15px; padding: 12px 30px; }
+  .btn-sm { font-size: 13px; padding: 9px 22px; }
+  .card { padding: var(--space-6); }
+  .quote { font-size: 20px; line-height: 1.35; }
+  .quote-attribution { font-size: 15px; }
+  .logo-strip span { font-size: 18px; }
+  .tag { font-size: 13px; }
+  form.contact-form label { font-size: 12px; }
+}
+@media (max-width: 480px) { h1 { font-size: 26px; } }
