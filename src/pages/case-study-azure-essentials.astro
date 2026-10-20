@@ -7,7 +7,9 @@ import media5 from '../media/case-studies/azure-essentials/video-opening-frame.p
 import media6 from '../media/case-studies/azure-essentials/event-style-guide.png';
 import media7 from '../media/case-studies/azure-essentials/email-banner-1.png';
 import media8 from '../media/case-studies/azure-essentials/email-banner-2.png';
-import media9 from '../media/work/azure-essentials-show.gif';
+import media9 from '../media/case-studies/azure-essentials/identity-showcase.gif';
+import media10 from '../media/case-studies/azure-essentials/event-style-guide-animated.gif';
+import media11 from '../media/case-studies/azure-essentials/resource-kit-update.gif';
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
@@ -20,9 +22,9 @@ const meta = [
 ];
 
 // Nearly every Azure-Essentials-specific still image in the manifest
-// that's already committed to asset-library/ (excludes the separate
-// "Azure Socials" and "Azure Essentials Show" projects, which are
-// different Work-page items, not this campaign).
+// that's already committed here (excludes the separate "Azure Socials"
+// and "Azure Essentials Show" projects, which are different Work-page
+// items, not this campaign).
 const gallery = [
   { src: media2.src, alt: 'Azure Essentials dark brand lockup', caption: 'Visual identity: dark brand lockup' },
   { src: media3.src, alt: 'Azure Essentials light brand lockup', caption: 'Visual identity: light brand lockup' },
@@ -31,7 +33,14 @@ const gallery = [
   { src: media6.src, alt: 'Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: Tech Accelerator style guide' },
   { src: media7.src, alt: 'Azure Essentials email banner, version one', caption: 'Email marketing: banner v1' },
   { src: media8.src, alt: 'Azure Essentials email banner, version two', caption: 'Email marketing: banner v2' },
+];
+
+// Animated assets, pulled out into their own section to build for
+// motion wherever the campaign actually had it.
+const motion = [
   { src: media9.src, alt: 'Animated Azure Essentials identity showcase', caption: 'Visual identity: animated showcase' },
+  { src: media10.src, alt: 'Animated Azure Essentials Tech Accelerator event style guide', caption: 'Event materials: animated style guide' },
+  { src: media11.src, alt: 'Animated Azure Essentials resource kit design update', caption: 'Resource kit: design update' },
 ];
 
 // Campaign videos, embedded directly rather than linked out.
@@ -114,6 +123,21 @@ const videos = [
       <h2>A closer look at the work.</h2>
       <div class="grid grid-3" style="margin-top: 2rem;">
         {gallery.map((g) => (
+          <figure class="asset-card">
+            <img src={g.src} alt={g.alt} loading="lazy" />
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="container">
+      <span class="eyebrow">Built for motion</span>
+      <h2>Animation, in the brand's own language.</h2>
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        {motion.map((g) => (
           <figure class="asset-card">
             <img src={g.src} alt={g.alt} loading="lazy" />
             <figcaption>{g.caption}</figcaption>
